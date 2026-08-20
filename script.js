@@ -1,19 +1,14 @@
-// Abre cada imagem de projeto em tamanho grande ao clicar.
-const modal = document.querySelector("#image-modal");
-const modalImage = document.querySelector("#modal-image");
-const closeButton = document.querySelector(".modal-close");
-const previews = document.querySelectorAll(".project-preview");
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+const modalClose = document.getElementById("modalClose");
+const previews = document.querySelectorAll(".project-img");
 
-previews.forEach((preview) => {
-  preview.addEventListener("click", () => {
-    modalImage.src = preview.dataset.image;
-    modalImage.alt = preview.dataset.alt;
+previews.forEach(p => {
+  p.addEventListener("click", () => {
+    modalImg.src = p.dataset.img;
     modal.showModal();
   });
 });
 
-closeButton.addEventListener("click", () => modal.close());
-
-modal.addEventListener("click", (event) => {
-  if (event.target === modal) modal.close();
-});
+modalClose.addEventListener("click", () => modal.close());
+modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
