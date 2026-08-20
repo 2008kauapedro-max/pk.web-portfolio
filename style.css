@@ -104,67 +104,90 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 
   .header { height: 66px; }
   .menu { gap: 14px; font-size: 10px; }
   
-  /* HERO - MANTÉM LADO A LADO NO CELULAR */
+  /* HERO - LADO A LADO NO CELULAR */
   .hero { 
     min-height: 0; 
     padding: 62px 0 32px; 
-    gap: 30px;
     grid-template-columns: 1fr 1fr; /* LADO A LADO */
+    gap: 20px;
   }
   
   .profile-photo { 
-    min-height: 300px; /* MENOR */
+    min-height: 280px; /* MENOR */
   }
   
   h1 { 
-    font-size: 2.5rem; /* MENOR */
+    font-size: 2.2rem; /* BEM MENOR */
   }
   
   .intro { 
-    font-size: 14px; /* MENOR */
+    font-size: 13px; 
   }
   
   /* SECTIONS */
-  .section { padding: 74px 0; }
+  .section { padding: 60px 0; }
+  
   .section-heading { 
-    margin-bottom: 42px;
-    grid-template-columns: 1fr; /* Empilha só o cabeçalho */
+    grid-template-columns: 1fr; 
+    margin-bottom: 30px; 
   }
   
-  /* PROJETOS - GRID 2 COLUNAS MENORES */
+  .section-heading h2 { 
+    font-size: 1.8rem; 
+  }
+  
+  /* PROJETOS - 2 COLUNAS COM IMAGENS PEQUENAS */
   .projects { 
     grid-template-columns: repeat(2, 1fr); /* 2 COLUNAS */
-    gap: 15px; /* MENOS ESPAÇO */
+    gap: 12px; 
   }
   
   .project-preview { 
-    height: 160px; /* IMAGEM MENOR */
+    height: 130px; /* IMAGEM PEQUENA */
   }
   
   .project-card h3 { 
-    font-size: 15px; /* MENOR */
+    font-size: 13px; 
   }
   
   .project-card p { 
-    font-size: 12px; /* MENOR */
+    font-size: 11px; 
   }
   
   /* SOBRE */
   .about-grid { 
-    grid-template-columns: 1fr; /* Empilha */
-    gap: 40px; 
+    grid-template-columns: 1fr; 
+    gap: 30px; 
+  }
+  
+  .about-text { 
+    font-size: 1.3rem; 
   }
   
   /* CONTATO */
-  .contact { padding-top: 80px; }
+  .contact { padding-top: 60px; }
+  .contact h2 { font-size: 2rem; }
+  
   .contact-strip {
-    grid-template-columns: 1fr; /* 1 coluna no celular */
-    gap: 15px;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 25px 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 30px 0 0 0;
+    padding: 20px;
+    background: #050505;
+    border-top: 1px solid #30302e;
+  }
+  
+  .contact-strip div {
+    gap: 5px;
+  }
+  
+  .contact-strip a,
+  .contact-strip p {
+    font-size: 12px;
   }
   
   /* FOOTER */
-  footer { flex-direction: column; }
+  footer { flex-direction: column; gap: 10px; }
 }
+  /* FOOTER */
+  footer { flex-direction: column; }
