@@ -1,58 +1,39 @@
 /* CORES E AJUSTES GERAIS */
 :root {
-  --black: #111;
-  --dark-gray: #252525;
-  --gray: #aaa9a4;
-  --line: #30302e;
-  --white: #f2f1ed;
-  --yellow: #f4cb35;
+--black: #111;
+--dark-gray: #252525;
+--gray: #aaa9a4;
+--line: #30302e;
+--white: #f2f1ed;
+--yellow: #f4cb35;
 }
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--black); color: var(--white); font-family: Manrope, Arial, sans-serif; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 .container { width: min(1220px, calc(100% - 48px)); margin: 0 auto; }
-
-/* HEADER */
 .header { height: 82px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
 .logo { font-size: 27px; font-weight: 800; letter-spacing: -.07em; }
 .logo span, .eyebrow, strong { color: var(--yellow); }
 .menu { display: flex; gap: 30px; font: 12px "DM Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
 .menu a:hover { color: var(--yellow); }
-
-/* HERO - LADO A LADO SEMPRE */
-.hero { 
-  min-height: 690px; 
-  display: grid; 
-  grid-template-columns: 1.25fr .75fr; 
-  align-items: end; 
-  gap: 50px; 
-  padding: 84px 0 66px; 
-  border-bottom: 1px solid var(--line); 
-}
+.hero { min-height: 690px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: end; gap: 50px; padding: 84px 0 66px; border-bottom: 1px solid var(--line); }
 .eyebrow { margin: 0; font: 12px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
 h1 { max-width: 790px; margin: 18px 0 34px; font-size: clamp(3.6rem, 8vw, 7.25rem); font-weight: 800; line-height: .93; letter-spacing: -.085em; }
 h1 em { color: var(--yellow); font-style: normal; }
 .intro { max-width: 440px; margin: 0; color: #c4c3bf; font-size: 17px; line-height: 1.65; }
 .scroll-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; margin-left: 24px; font: 11px "DM Mono", monospace; color: var(--gray); text-transform: uppercase; }
 .scroll-link span { display: grid; width: 41px; height: 41px; place-items: center; border: 1px solid #5c5b56; border-radius: 50%; color: var(--yellow); font-size: 18px; }
-
-/* PROFILE PHOTO */
 .profile-photo { position: relative; min-height: 480px; overflow: hidden; background: var(--dark-gray); }
 .profile-photo::before { content: ""; position: absolute; top: 8%; right: -10%; width: 78%; aspect-ratio: 1; border-radius: 50%; background: var(--yellow); }
 .profile-photo::after { content: "PEDRO / 26"; position: absolute; inset: 15px; padding: 12px; border: 1px solid rgba(244, 203, 53, .7); color: var(--yellow); font: 10px "DM Mono", monospace; letter-spacing: .1em; pointer-events: none; }
 .profile-photo img { position: absolute; z-index: 1; top: 15%; left: 8%; width: 78%; aspect-ratio: 1; object-fit: cover; object-position: center top; border: 8px solid #1a1a19; border-radius: 50%; filter: contrast(1.05); }
 .profile-tag { position: absolute; z-index: 2; bottom: 18px; left: 18px; padding: 8px 10px; background: var(--yellow); color: var(--black); font: 10px "DM Mono", monospace; text-transform: uppercase; }
-
-/* SECTIONS */
 .section { padding: 110px 0; border-bottom: 1px solid var(--line); }
 .section-heading { display: grid; grid-template-columns: 1fr 3fr; gap: 30px; margin-bottom: 65px; }
 .section-heading h2 { max-width: 470px; margin: 0; font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.07em; }
 .section-heading p { max-width: 450px; margin: 6px 0 0; color: #b9b8b3; line-height: 1.65; }
-
-/* PROJECTS - GRID 2 COLUNAS */
 .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
 .project-card { padding-bottom: 25px; border-bottom: 1px solid var(--line); }
 .project-preview { position: relative; display: block; width: 100%; height: 330px; padding: 0; overflow: hidden; border: 0; background: var(--dark-gray); cursor: zoom-in; }
@@ -63,36 +44,24 @@ h1 em { color: var(--yellow); font-style: normal; }
 .project-meta { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; color: var(--gray); font: 11px "DM Mono", monospace; text-transform: uppercase; }
 .project-card h3 { margin: 8px 0 6px; font-size: 21px; letter-spacing: -.04em; }
 .project-card p { margin: 0; color: #b9b8b3; font-size: 14px; line-height: 1.55; }
-
-/* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
 .about-text { margin: 0; font-size: clamp(1.6rem, 3vw, 2.45rem); line-height: 1.24; letter-spacing: -.055em; }
 .services { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .services li { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line); }
 .services b { color: var(--gray); font: 11px "DM Mono", monospace; }
-
-/* CONTACT */
 .contact { padding: 118px 0 55px; }
 .contact h2 { max-width: 880px; margin: 15px 0 40px; font-size: clamp(3rem, 7vw, 6.5rem); line-height: .92; letter-spacing: -.085em; }
 .contact h2 a { border-bottom: 5px solid var(--yellow); }
-
-/* CONTACT STRIP */
 .contact-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 60px calc(50% - 50vw) -55px; padding: 38px max(24px, calc((100vw - 1220px) / 2)); background: #050505; border-top: 1px solid #30302e; }
 .contact-strip div { display: flex; flex-direction: column; gap: 9px; }
 .contact-label { color: var(--yellow); font: 10px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
 .contact-strip a, .contact-strip p { margin: 0; color: var(--white); font-size: 14px; font-weight: 700; }
 .contact-strip a:hover { color: var(--yellow); }
-
-/* FOOTER */
 footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 55px; color: #868681; font: 11px "DM Mono", monospace; text-transform: uppercase; }
-
-/* MODAL */
 .image-modal { max-width: min(1100px, 92vw); max-height: 92vh; padding: 0; overflow: visible; border: 0; background: transparent; }
 .image-modal::backdrop { background: rgba(0, 0, 0, .88); }
 .image-modal img { display: block; max-width: 100%; max-height: 90vh; border: 1px solid var(--yellow); }
 .modal-close { position: absolute; top: -15px; right: -15px; display: grid; width: 38px; height: 38px; place-items: center; border: 0; border-radius: 50%; background: var(--yellow); color: var(--black); font-size: 27px; cursor: pointer; }
-
-/* WHATSAPP BUTTON */
 .whatsapp-button { display: inline-flex; align-items: center; margin-top: 18px; margin-left: 0; padding: 14px 22px; border-radius: 999px; background: var(--yellow); color: var(--black); font-family: Manrope, Arial, sans-serif; font-size: 13px; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; box-shadow: 0 0 0 0 rgba(244, 203, 53, .5); transition: transform .25s ease, background .25s ease, box-shadow .25s ease; }
 .whatsapp-button:hover { background: #ffe36b; transform: translateY(-4px) scale(1.04); box-shadow: 0 10px 25px rgba(244, 203, 53, .28); }
 
@@ -104,77 +73,64 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 
   .header { height: 66px; }
   .menu { gap: 14px; font-size: 10px; }
   
-  /* HERO - LADO A LADO NO CELULAR */
+  /* HERO - MANTÉM LADO A LADO NO CELULAR */
   .hero { 
     min-height: 0; 
     padding: 62px 0 32px; 
+    gap: 30px;
     grid-template-columns: 1fr 1fr; /* LADO A LADO */
-    gap: 20px;
   }
   
   .profile-photo { 
-    min-height: 280px; /* MENOR */
+    min-height: 300px; /* MENOR */
   }
   
   h1 { 
-    font-size: 2.2rem; /* BEM MENOR */
+    font-size: 2.5rem; /* MENOR */
   }
   
   .intro { 
-    font-size: 13px; 
+    font-size: 14px; /* MENOR */
   }
   
   /* SECTIONS */
-  .section { padding: 60px 0; }
-  
+  .section { padding: 74px 0; }
   .section-heading { 
-    grid-template-columns: 1fr; 
-    margin-bottom: 30px; 
+    margin-bottom: 42px;
+    grid-template-columns: 1fr; /* Só o cabeçalho empilha */
   }
   
-  .section-heading h2 { 
-    font-size: 1.8rem; 
-  }
-  
-  /* PROJETOS - 2 COLUNAS COM IMAGENS PEQUENAS */
+  /* PROJETOS - 2 COLUNAS MENORES */
   .projects { 
     grid-template-columns: repeat(2, 1fr); /* 2 COLUNAS */
-    gap: 12px; 
+    gap: 15px; /* MENOS ESPAÇO */
   }
   
   .project-preview { 
-    height: 130px; /* IMAGEM PEQUENA */
+    height: 160px; /* IMAGEM MENOR */
   }
   
   .project-card h3 { 
-    font-size: 13px; 
+    font-size: 15px; /* MENOR */
   }
   
   .project-card p { 
-    font-size: 11px; 
+    font-size: 12px; /* MENOR */
   }
   
   /* SOBRE */
   .about-grid { 
-    grid-template-columns: 1fr; 
-    gap: 30px; 
-  }
-  
-  .about-text { 
-    font-size: 1.3rem; 
+    grid-template-columns: 1fr; /* Empilha */
+    gap: 40px; 
   }
   
   /* CONTATO */
-  .contact { padding-top: 60px; }
-  .contact h2 { font-size: 2rem; }
-  
+  .contact { padding-top: 80px; }
   .contact-strip {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr; /* 2 COLUNAS */
+    gap: 15px;
     margin: 30px 0 0 0;
     padding: 20px;
-    background: #050505;
-    border-top: 1px solid #30302e;
   }
   
   .contact-strip div {
@@ -187,7 +143,5 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 
   }
   
   /* FOOTER */
-  footer { flex-direction: column; gap: 10px; }
-}
-  /* FOOTER */
   footer { flex-direction: column; }
+}
