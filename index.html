@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pedro Kauã | Portfólio</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <header class="header">
   <div class="container header-inner">
-    <a href="#inicio" class="logo">Pedro<span>Kauã</span>.</span></a>
+    <a href="#inicio" class="logo">PEDRO<span>.</span></a>
     <nav class="menu">
       <a href="#trabalhos">Trabalhos</a>
       <a href="#sobre">Sobre</a>
@@ -23,7 +23,7 @@
 <section id="inicio" class="hero">
   <div class="container hero-inner">
     <div class="hero-text">
-      <p class="eyebrow">Web Designer & Social Media</p>
+      <span class="eyebrow">Web Designer & Social Media</span>
       <h1>Presença digital <em>que vende.</em></h1>
       <p class="intro">Web designer e especialista em perfis de Instagram. Organizo sua presença online para ela parecer profissional, clara e pronta para crescer.</p>
       <div class="hero-btns">
@@ -49,7 +49,7 @@
     </div>
     <div class="projects">
       <article class="project">
-        <div class="project-img" data-img="assets/clinica-leao-de-juda.png">
+        <div class="project-img" data-image="assets/clinica-leao-de-juda.png" data-alt="Clínica Leão de Judá">
           <img src="assets/clinica-leao-de-juda.png" alt="Clínica Leão de Judá">
           <span class="zoom">Ampliar ↗</span>
         </div>
@@ -58,7 +58,7 @@
         <p>Fachada e cartão de visita para o Dr. Cleiton Pontes.</p>
       </article>
       <article class="project">
-        <div class="project-img" data-img="assets/naiara-sobral-cakes.png">
+        <div class="project-img" data-image="assets/naiara-sobral-cakes.png" data-alt="Naiara Sobral Cakes">
           <img src="assets/naiara-sobral-cakes.png" alt="Naiara Sobral Cakes">
           <span class="zoom">Ampliar ↗</span>
         </div>
@@ -67,7 +67,7 @@
         <p>Site responsivo que transmite delicadeza e profissionalismo.</p>
       </article>
       <article class="project">
-        <div class="project-img" data-img="assets/paula.png">
+        <div class="project-img" data-image="assets/paula.png" data-alt="Paula Moda Íntima">
           <img src="assets/paula.png" alt="Paula Moda Íntima">
           <span class="zoom">Ampliar ↗</span>
         </div>
@@ -76,7 +76,7 @@
         <p>Organização de bio, link para WhatsApp e destaques profissionais.</p>
       </article>
       <article class="project">
-        <div class="project-img" data-img="assets/artes.png">
+        <div class="project-img" data-image="assets/artes.png" data-alt="Posts Paula Moda">
           <img src="assets/artes.png" alt="Posts Paula Moda">
           <span class="zoom">Ampliar ↗</span>
         </div>
@@ -107,13 +107,10 @@
           <li><span>Posts profissionais</span><b>04</b></li>
         </ul>
       </div>
-      <div class="about-visual">
-        <div class="mockup">
-          <div class="mock-card c1"><i class="fas fa-laptop-code"></i><span>Sites Responsivos</span></div>
-          <div class="mock-card c2"><i class="fab fa-instagram"></i><span>Instagram Profissional</span></div>
-          <div class="mock-card c3"><i class="fas fa-palette"></i><span>Identidade Visual</span></div>
-         
-        </div>
+      <div class="mockup">
+        <div class="mock-card c1"><i class="fas fa-laptop-code"></i><span>Sites Responsivos</span></div>
+        <div class="mock-card c2"><i class="fab fa-instagram"></i><span>Instagram Profissional</span></div>
+        <div class="mock-card c3"><i class="fas fa-palette"></i><span>Identidade Visual</span></div>
       </div>
     </div>
   </div>
@@ -149,15 +146,15 @@
 
 <footer>
   <div class="container footer-inner">
-    <div><strong class="logo">Pedro<span>Kauã</span><strong class="logo">. </strong><p class="foot-tag">Presença digital que vende.</p></div>
+    <div><strong class="logo">PEDRO<span>.</span></strong><p class="foot-tag">Presença digital que vende.</p></div>
     <div class="foot-links"><a href="#inicio">Início</a><a href="#trabalhos">Trabalhos</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></div>
     <p class="copy">© 2026 Pedro Kauã. Planaltina-GO</p>
   </div>
 </footer>
 
-<dialog id="modal" class="modal">
+<dialog id="image-modal" class="modal">
   <button class="modal-close" id="modalClose">✕</button>
-  <img id="modalImg" src="" alt="">
+  <img id="modal-image" src="" alt="">
 </dialog>
 
 <script src="script.js"></script>
