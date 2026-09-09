@@ -3,24 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedro Kauã | Portfólio</title>
+<title>Pedro Kauã — Web Designer & Social Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@400;700;800&display=swap');
-
-:root {
-  --amarelo: #FFE500;
-  --preto: #0a0a0a;
-  --cinza: #1a1a1a;
-  --branco: #f5f5f5;
-  --rosa: #FF006E;
-  --azul: #3A86FF;
-}
-
-* {
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --preto: #0a0a0a;
+  --preto-suave: #111111;
+  --amarelo: #F5E300;
+  --amarelo-escuro: #d4c200;
+  --branco: #f0ede4;
+  --cinza: #6b6b6b;
+  --cinza-claro: #2a2a2a;
 }
 
 html {
@@ -30,640 +36,692 @@ html {
 body {
   background: var(--preto);
   color: var(--branco);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
   overflow-x: hidden;
-  cursor: crosshair;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* HEADER DESCONSTRUIDO */
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ============================================
+   TIPOGRAFIA EDITORIAL
+   ============================================ */
+.font-serif { font-family: 'Fraunces', serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================
+   LAYOUT BASE
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Linhas divisórias finas */
+.divider {
+  height: 1px;
+  background: var(--cinza-claro);
+  width: 100%;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
 .header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  padding: 20px 40px;
+  z-index: 100;
+  padding: 24px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  mix-blend-mode: difference;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--cinza-claro);
 }
 
 .logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -2px;
-  transform: rotate(-2deg);
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
 }
 
 .logo span {
   color: var(--amarelo);
-  display: inline-block;
-  transform: rotate(3deg);
+  font-style: italic;
 }
 
-.menu {
+.nav {
   display: flex;
   gap: 40px;
-  list-style: none;
 }
 
-.menu a {
-  color: var(--branco);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  transition: 0.3s;
-}
-
-.menu a::before {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--amarelo);
-  transition: width 0.3s;
-}
-
-.menu a:hover::before {
-  width: 100%;
-}
-
-.mobile-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--branco);
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* HERO CAÓTICO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 40px 80px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, var(--rosa) 0%, transparent 70%);
-  opacity: 0.3;
-  filter: blur(80px);
-  animation: pulse 8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.2) rotate(5deg); }
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.hero-text h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  font-weight: 800;
-  line-height: 0.9;
-  margin-bottom: 30px;
-  letter-spacing: -3px;
-}
-
-.hero-text h1 .linha1 {
-  display: block;
-  color: var(--branco);
-}
-
-.hero-text h1 .linha2 {
-  display: block;
-  color: var(--amarelo);
-  margin-left: 40px;
-  transform: rotate(-1deg);
-}
-
-.hero-subtitle {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: var(--amarelo);
-  margin-bottom: 20px;
-  display: block;
-}
-
-.hero-desc {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #888;
-  max-width: 450px;
-  margin-bottom: 40px;
-  border-left: 3px solid var(--azul);
-  padding-left: 20px;
-}
-
-.hero-botoes {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 18px 35px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border: 2px solid transparent;
-}
-
-.btn-primario {
-  background: var(--amarelo);
-  color: var(--preto);
-  transform: rotate(-2deg);
-}
-
-.btn-primario:hover {
-  transform: rotate(0deg) scale(1.05);
-  box-shadow: 0 10px 30px rgba(255, 229, 0, 0.4);
-}
-
-.btn-secundario {
-  background: transparent;
-  color: var(--branco);
-  border: 2px solid var(--branco);
-  transform: rotate(1deg);
-}
-
-.btn-secundario:hover {
-  transform: rotate(0deg);
-  background: var(--branco);
-  color: var(--preto);
-}
-
-.hero-foto {
-  position: relative;
-}
-
-.foto-container {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  transform: rotate(3deg);
-  border: 3px solid var(--cinza);
-  transition: transform 0.3s;
-}
-
-.foto-container:hover {
-  transform: rotate(0deg) scale(1.02);
-}
-
-.foto-container img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: grayscale(100%) contrast(1.1);
-  transition: filter 0.3s;
-}
-
-.foto-container:hover img {
-  filter: grayscale(0%) contrast(1);
-}
-
-.badge-disponivel {
-  position: absolute;
-  bottom: 30px;
-  left: -30px;
-  background: var(--rosa);
-  color: white;
-  padding: 12px 25px;
-  border-radius: 50px;
-  font-weight: 700;
+.nav a {
   font-size: 13px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transform: rotate(-5deg);
-  box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
-  animation: float 3s ease-in-out infinite;
+  letter-spacing: 1.5px;
+  color: var(--cinza);
+  transition: color 0.3s;
+  position: relative;
 }
 
-@keyframes float {
-  0%, 100% { transform: rotate(-5deg) translateY(0); }
-  50% { transform: rotate(-5deg) translateY(-10px); }
-}
-
-.elemento-grafico {
+.nav a::before {
+  content: '';
   position: absolute;
-  width: 150px;
-  height: 150px;
-  background: var(--azul);
+  left: -12px;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--amarelo);
   border-radius: 50%;
-  opacity: 0.2;
-  filter: blur(40px);
-}
-
-.el-1 { top: 10%; left: 10%; animation: float 6s ease-in-out infinite; }
-.el-2 { bottom: 20%; right: 5%; background: var(--amarelo); animation: float 7s ease-in-out infinite reverse; }
-
-/* PORTFOLIO ASSIMÉTRICO */
-.portfolio {
-  padding: 120px 40px;
-  position: relative;
-}
-
-.section-label {
-  font-family: 'Syne', sans-serif;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: var(--amarelo);
-  margin-bottom: 20px;
-  display: block;
-}
-
-.section-titulo {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  margin-bottom: 60px;
-  line-height: 1;
-  letter-spacing: -2px;
-}
-
-.projetos-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.projeto-card {
-  position: relative;
-  background: var(--cinza);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.4s;
-  cursor: pointer;
-}
-
-.projeto-card:nth-child(1) {
-  grid-column: 1 / 8;
-  transform: rotate(-1deg);
-}
-
-.projeto-card:nth-child(2) {
-  grid-column: 8 / 13;
-  grid-row: 1 / 3;
-  transform: rotate(2deg);
-}
-
-.projeto-card:nth-child(3) {
-  grid-column: 1 / 6;
-  grid-row: 2 / 4;
-  transform: rotate(1deg);
-}
-
-.projeto-card:hover {
-  transform: rotate(0deg) scale(1.02);
-  z-index: 10;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-
-.projeto-img {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 16/10;
-}
-
-.projeto-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s;
-}
-
-.projeto-card:hover .projeto-img img {
-  transform: scale(1.1);
-}
-
-.projeto-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.projeto-card:hover .projeto-overlay {
+.nav a:hover {
+  color: var(--branco);
+}
+
+.nav a:hover::before {
   opacity: 1;
 }
 
-.zoom-text {
-  color: var(--amarelo);
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
 }
 
-.projeto-info {
-  padding: 30px;
-}
-
-.projeto-categoria {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--amarelo);
-  margin-bottom: 10px;
-  display: block;
-}
-
-.projeto-nome {
-  font-family: 'Syne', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  line-height: 1.2;
-}
-
-.projeto-desc {
-  font-size: 14px;
-  color: #888;
-  line-height: 1.6;
-}
-
-/* SOBRE QUEBRADO */
-.sobre {
-  padding: 120px 40px;
-  background: linear-gradient(180deg, var(--preto) 0%, var(--cinza) 100%);
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  padding: 140px 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
 }
 
-.sobre-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 100px;
-  align-items: center;
-}
-
-.sobre-texto h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 30px;
-  letter-spacing: -2px;
-}
-
-.sobre-texto h2 span {
-  color: var(--rosa);
-  display: block;
-}
-
-.sobre-desc {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #999;
-  margin-bottom: 40px;
-}
-
-.servicos-lista {
-  list-style: none;
-}
-
-.servicos-lista li {
-  padding: 20px 0;
-  border-bottom: 1px solid #333;
+.hero-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--cinza-claro);
+}
+
+.hero-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--cinza);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-meta strong {
+  color: var(--amarelo);
   font-weight: 500;
-  transition: all 0.3s;
 }
 
-.servicos-lista li:hover {
-  padding-left: 20px;
-  color: var(--amarelo);
-}
-
-.servicos-lista li span.numero {
-  font-family: 'Syne', sans-serif;
-  font-size: 14px;
-  color: var(--rosa);
-  font-weight: 700;
-}
-
-.sobre-visual {
-  position: relative;
-  height: 500px;
-}
-
-.card-flutuante {
-  position: absolute;
-  background: var(--preto);
-  border: 2px solid #333;
-  border-radius: 16px;
-  padding: 30px;
-  text-align: center;
-  transition: all 0.3s;
-}
-
-.card-flutuante:hover {
-  border-color: var(--amarelo);
-  transform: translateY(-10px);
-}
-
-.card-flutuante i {
-  font-size: 40px;
-  color: var(--amarelo);
-  margin-bottom: 15px;
-  display: block;
-}
-
-.card-flutuante span {
-  font-weight: 700;
-  font-size: 14px;
+.hero-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--branco);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.cf-1 {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  z-index: 3;
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--amarelo);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.cf-2 {
-  top: 150px;
-  left: 0;
-  width: 45%;
-  z-index: 2;
-  border-color: var(--rosa);
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
 }
 
-.cf-3 {
-  bottom: 50px;
-  right: 0;
-  width: 50%;
-  z-index: 2;
-  border-color: var(--azul);
+.hero-main {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 60px;
 }
 
-/* CONTATO BRUTO */
-.contato {
-  padding: 120px 40px;
-  text-align: center;
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--amarelo);
+  font-weight: 400;
+}
+
+.hero-title .linha-final {
+  display: block;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--amarelo);
+}
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.hero-photo-wrap {
   position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4/5;
   overflow: hidden;
+  border-radius: 4px;
 }
 
-.contato::before {
+.hero-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.1);
+  transition: filter 0.6s ease;
+}
+
+.hero-photo-wrap:hover img {
+  filter: grayscale(0%) contrast(1);
+}
+
+.hero-photo-wrap::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--azul) 0%, transparent 70%);
-  opacity: 0.1;
-  filter: blur(60px);
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,0.4) 100%);
+  pointer-events: none;
 }
 
-.contato-titulo {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2rem, 6vw, 5rem);
-  font-weight: 800;
-  margin-bottom: 50px;
-  line-height: 1;
-  letter-spacing: -3px;
-}
-
-.contato-titulo a {
+.hero-photo-tag {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
   color: var(--amarelo);
-  text-decoration: none;
-  border-bottom: 5px solid var(--amarelo);
-}
-
-.contato-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.contato-item {
-  background: var(--cinza);
-  border: 2px solid transparent;
-  border-radius: 12px;
-  padding: 25px;
-  text-align: left;
-  transition: all 0.3s;
-  text-decoration: none;
-  color: var(--branco);
-  display: block;
-}
-
-.contato-item:hover {
-  border-color: var(--amarelo);
-  transform: translateY(-5px) rotate(1deg);
-}
-
-.contato-item i {
-  font-size: 28px;
-  margin-bottom: 15px;
-  display: block;
-}
-
-.contato-item.whatsapp i { color: #25D366; }
-.contato-item.instagram i { color: #E1306C; }
-.contato-item.email i { color: var(--amarelo); }
-.contato-item.local i { color: var(--azul); }
-
-.contato-label {
-  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #666;
-  margin-bottom: 5px;
+  z-index: 2;
+}
+
+.hero-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--cinza);
+  max-width: 380px;
+}
+
+.hero-desc strong {
+  color: var(--branco);
+  font-weight: 600;
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 30px;
+  border-top: 1px solid var(--cinza-claro);
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.btn-primary {
+  background: var(--amarelo);
+  color: var(--preto);
+}
+
+.btn-primary:hover {
+  background: var(--branco);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--branco);
+  border: 1px solid var(--cinza-claro);
+}
+
+.btn-ghost:hover {
+  border-color: var(--amarelo);
+  color: var(--amarelo);
+}
+
+.hero-scroll {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--cinza);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-scroll::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--cinza);
+}
+
+/* ============================================
+   SEÇÕES GERAIS
+   ============================================ */
+.section {
+  padding: 120px 0;
+  position: relative;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  margin-bottom: 80px;
+  align-items: start;
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--amarelo);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
   display: block;
 }
 
-.contato-valor {
-  font-weight: 700;
-  font-size: 14px;
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
-/* FOOTER SIMPLES */
-footer {
-  padding: 60px 40px;
-  border-top: 1px solid #222;
+.section-title em {
+  font-style: italic;
+  color: var(--amarelo);
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--cinza);
+  line-height: 1.6;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+/* ============================================
+   PROJETOS (EDITORIAL)
+   ============================================ */
+.projects {
+  padding: 120px 0;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 80px 1fr 1.2fr;
+  gap: 40px;
+  padding: 60px 0;
+  border-top: 1px solid var(--cinza-claro);
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.project:last-child {
+  border-bottom: 1px solid var(--cinza-claro);
+}
+
+.project:hover {
+  padding-left: 20px;
+}
+
+.project:hover .project-img img {
+  transform: scale(1.05);
+}
+
+.project:hover .project-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-number {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--cinza);
+  line-height: 1;
+  font-style: italic;
+}
+
+.project:hover .project-number {
+  color: var(--amarelo);
+}
+
+.project-img {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--preto-suave);
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--amarelo);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-name {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.project-name em {
+  font-style: italic;
+  color: var(--amarelo);
+}
+
+.project-desc {
+  font-size: 15px;
+  color: var(--cinza);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.project-arrow {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-20px);
+  font-size: 24px;
+  color: var(--amarelo);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* ============================================
+   SOBRE
+   ============================================ */
+.about {
+  padding: 120px 0;
+  background: var(--preto-suave);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-text {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.about-text em {
+  font-style: italic;
+  color: var(--amarelo);
+}
+
+.about-text p + p {
+  margin-top: 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--cinza);
+  line-height: 1.7;
+}
+
+.services {
+  list-style: none;
+  margin-top: 60px;
+}
+
+.services li {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--cinza-claro);
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.services li:hover {
+  padding-left: 16px;
+  border-bottom-color: var(--amarelo);
+}
+
+.services li:hover .service-name {
+  color: var(--amarelo);
+}
+
+.service-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--amarelo);
+}
+
+.service-name {
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.service-icon {
+  font-size: 18px;
+  color: var(--cinza);
+}
+
+/* ============================================
+   CONTATO
+   ============================================ */
+.contact {
+  padding: 120px 0 80px;
   text-align: center;
+}
+
+.contact-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 60px;
+}
+
+.contact-title em {
+  font-style: italic;
+  color: var(--amarelo);
+}
+
+.contact-title a {
+  color: var(--amarelo);
+  border-bottom: 3px solid var(--amarelo);
+  transition: all 0.3s;
+}
+
+.contact-title a:hover {
+  color: var(--branco);
+  border-bottom-color: var(--branco);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--cinza-claro);
+  border: 1px solid var(--cinza-claro);
+  max-width: 1000px;
+  margin: 0 auto 80px;
+}
+
+.contact-item {
+  background: var(--preto);
+  padding: 40px 30px;
+  text-align: left;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-item:hover {
+  background: var(--preto-suave);
+}
+
+.contact-item:hover .contact-item-icon {
+  color: var(--amarelo);
+  transform: translateY(-4px);
+}
+
+.contact-item-icon {
+  font-size: 24px;
+  color: var(--branco);
+  transition: all 0.3s ease;
+}
+
+.contact-item-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--cinza);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.contact-item-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--branco);
+  word-break: break-word;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--cinza-claro);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .footer-logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 10px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 900;
 }
 
-.footer-tag {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 30px;
+.footer-logo span {
+  color: var(--amarelo);
+  font-style: italic;
+}
+
+.footer-copy {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--cinza);
+  letter-spacing: 1px;
 }
 
 .footer-links {
   display: flex;
-  justify-content: center;
   gap: 30px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
 }
 
 .footer-links a {
-  color: #666;
-  text-decoration: none;
-  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--cinza);
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: color 0.3s;
@@ -673,12 +731,9 @@ footer {
   color: var(--amarelo);
 }
 
-.footer-copy {
-  color: #444;
-  font-size: 12px;
-}
-
-/* MODAL */
+/* ============================================
+   MODAL
+   ============================================ */
 .modal {
   border: none;
   background: transparent;
@@ -689,30 +744,30 @@ footer {
 }
 
 .modal::backdrop {
-  background: rgba(0,0,0,0.95);
-  backdrop-filter: blur(5px);
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
 }
 
 .modal-img {
   max-width: 100%;
   max-height: 90vh;
-  border-radius: 8px;
-  border: 3px solid var(--amarelo);
+  border-radius: 4px;
+  border: 1px solid var(--cinza-claro);
 }
 
 .modal-close {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
   background: var(--amarelo);
-  border: none;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
   color: var(--preto);
-  font-weight: 700;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.3s;
 }
 
@@ -720,106 +775,108 @@ footer {
   transform: rotate(90deg);
 }
 
-/* MOBILE */
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 73px;
+  left: 0;
+  right: 0;
+  background: var(--preto);
+  border-bottom: 1px solid var(--cinza-claro);
+  padding: 30px 32px;
+  z-index: 99;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 400;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cinza-claro);
+}
+
+.mobile-menu a:hover {
+  color: var(--amarelo);
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
 @media (max-width: 968px) {
-  .header {
-    padding: 20px;
-  }
+  .container { padding: 0 24px; }
   
-  .menu {
-    display: none;
-  }
+  .nav { display: none; }
+  .menu-toggle { display: flex; }
   
-  .mobile-toggle {
-    display: block;
-  }
-  
-  .hero {
-    padding: 100px 20px 60px;
-  }
-  
-  .hero-grid {
+  .hero-main {
     grid-template-columns: 1fr;
     gap: 40px;
   }
   
-  .hero-text h1 {
-    font-size: 3rem;
+  .hero-side {
+    align-items: flex-start;
   }
   
-  .hero-text h1 .linha2 {
-    margin-left: 20px;
-  }
-  
-  .hero-desc {
-    font-size: 16px;
-    border-left: none;
-    padding-left: 0;
-  }
-  
-  .hero-foto {
-    order: -1;
-  }
-  
-  .foto-container {
+  .hero-photo-wrap {
     max-width: 300px;
-    margin: 0 auto;
-    display: block;
   }
   
-  .badge-disponivel {
-    left: 50%;
-    transform: translateX(-50%) rotate(0deg);
-  }
-  
-  .projetos-grid {
+  .section-header {
     grid-template-columns: 1fr;
     gap: 30px;
   }
   
-  .projeto-card:nth-child(1),
-  .projeto-card:nth-child(2),
-  .projeto-card:nth-child(3) {
-    grid-column: 1;
-    grid-row: auto;
-    transform: rotate(0deg);
-  }
-  
-  .sobre-container {
+  .project {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 24px;
+    padding: 40px 0;
   }
   
-  .sobre-visual {
-    height: 400px;
-    order: -1;
+  .project-number {
+    font-size: 36px;
   }
   
-  .card-flutuante {
-    padding: 20px;
+  .project-arrow {
+    display: none;
   }
   
-  .cf-1 {
-    width: 80%;
-  }
-  
-  .cf-2, .cf-3 {
-    width: 40%;
-  }
-  
-  .contato-grid {
+  .about-grid {
     grid-template-columns: 1fr;
+    gap: 50px;
   }
   
-  .portfolio, .sobre, .contato {
-    padding: 80px 20px;
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .section, .projects, .about, .contact {
+    padding: 80px 0;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 2.5rem;
-    letter-spacing: -1px;
+@media (max-width: 560px) {
+  .container { padding: 0 20px; }
+  .header { padding: 20px; }
+  
+  .hero { padding: 110px 0 60px; }
+  
+  .hero-top {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
   
   .btn {
@@ -827,209 +884,249 @@ footer {
     justify-content: center;
   }
   
-  .hero-botoes {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-item {
+    padding: 30px 24px;
+  }
+  
+  .footer-inner {
     flex-direction: column;
+    text-align: center;
   }
   
-  .section-titulo {
-    font-size: 2rem;
-  }
-  
-  .contato-titulo {
-    font-size: 2rem;
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="header">
-  <div class="logo">PEDRO<span>.</span></div>
-  <nav>
-    <ul class="menu">
-      <li><a href="#trabalhos">Trabalhos</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
+  <a href="#inicio" class="logo">Pedro<span>.</span></a>
+  <nav class="nav">
+    <a href="#trabalhos">Trabalhos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
   </nav>
-  <button class="mobile-toggle" onclick="toggleMenu()">
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
     <i class="fas fa-bars"></i>
   </button>
 </header>
 
-<section class="hero">
-  <div class="elemento-grafico el-1"></div>
-  <div class="elemento-grafico el-2"></div>
-  
-  <div class="hero-grid">
-    <div class="hero-text">
-      <span class="hero-subtitle">Web Designer & Social Media</span>
-      <h1>
-        <span class="linha1">Presença</span>
-        <span class="linha2">digital que vende.</span>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#trabalhos" onclick="toggleMenu()">Trabalhos</a>
+  <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="#contato" onclick="toggleMenu()">Contato</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-top">
+      <div class="hero-meta">
+        <strong>Pedro Kauã</strong> — Web Designer & Social Media<br>
+        Planaltina, GO · Brasil
+      </div>
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        Disponível para projetos
+      </div>
+    </div>
+
+    <div class="hero-main">
+      <h1 class="hero-title">
+        Presença<br>
+        digital que<br>
+        <span class="linha-final">vende.</span>
       </h1>
-      <p class="hero-desc">
-        Web designer e especialista em perfis de Instagram. Organizo sua presença online para ela parecer profissional, clara e pronta para crescer.
-      </p>
-      <div class="hero-botoes">
-        <a href="https://wa.me/5561993148848" class="btn btn-primario" target="_blank">
+      <div class="hero-side">
+        <div class="hero-photo-wrap">
+          <img src="assets/perfil.png" alt="Pedro Kauã" onerror="this.src='https://placehold.co/400x500/1a1a1a/F5E300?text=PEDRO'">
+          <span class="hero-photo-tag">© 2026 · PK</span>
+        </div>
+        <p class="hero-desc">
+          <strong>Organizo sua presença online</strong> para ela parecer profissional, clara e pronta para crescer. Do site ao Instagram, cuido da sua primeira impressão.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-cta">
+        <a href="https://wa.me/5561993148848" class="btn btn-primary" target="_blank">
           <i class="fab fa-whatsapp"></i> Vamos conversar
         </a>
-        <a href="#trabalhos" class="btn btn-secundario">
-          Ver trabalhos <i class="fas fa-arrow-down"></i>
+        <a href="#trabalhos" class="btn btn-ghost">
+          Ver trabalhos
         </a>
       </div>
-    </div>
-    
-    <div class="hero-foto">
-      <div class="foto-container">
-        <img src="assets/perfil.png" alt="Pedro Kauã" onerror="this.src='https://placehold.co/500x600/1a1a1a/FFE500?text=PEDRO'">
-        <span class="badge-disponivel">✓ Disponível</span>
-      </div>
+      <div class="hero-scroll">Role para baixo</div>
     </div>
   </div>
 </section>
 
-<section class="portfolio" id="trabalhos">
-  <span class="section-label">// Portfólio Selecionado</span>
-  <h2 class="section-titulo">Trabalhos que geram<br>presença real.</h2>
-  
-  <div class="projetos-grid">
-    <article class="projeto-card" onclick="abrirModal('assets/clinica-leao-de-juda.png')">
-      <div class="projeto-img">
-        <img src="assets/clinica-leao-de-juda.png" alt="Clínica Leão de Judá" onerror="this.src='https://placehold.co/800x500/1a1a1a/FFE500?text=CLINICA'">
-        <div class="projeto-overlay">
-          <span class="zoom-text">Ampliar →</span>
+<div class="divider"></div>
+
+<!-- PROJETOS -->
+<section class="projects" id="trabalhos">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="section-number">01 — Trabalhos</span>
+      </div>
+      <div>
+        <h2 class="section-title">Projetos que geram <em>presença</em> real.</h2>
+        <p class="section-subtitle">Três projetos reais que mostram como uma boa apresentação faz toda a diferença para uma marca.</p>
+      </div>
+    </div>
+
+    <article class="project" onclick="abrirModal('assets/clinica-leao-de-juda.png', 'Clínica Leão de Judá')">
+      <div class="project-number">01</div>
+      <div class="project-img">
+        <img src="assets/clinica-leao-de-juda.png" alt="Clínica Leão de Judá" onerror="this.src='https://placehold.co/800x500/1a1a1a/F5E300?text=LEAO+DE+JUDA'">
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span>Identidade Visual</span>
+          <span>2026</span>
         </div>
+        <h3 class="project-name">Clínica Odontológica<br><em>Leão de Judá</em></h3>
+        <p class="project-desc">Fachada e cartão de visita para o Dr. Cleiton Pontes. Identidade que transmite confiança e autoridade no consultório.</p>
       </div>
-      <div class="projeto-info">
-        <span class="projeto-categoria">Identidade Visual — 2026</span>
-        <h3 class="projeto-nome">Clínica Odontológica<br>Leão de Judá</h3>
-        <p class="projeto-desc">Fachada e cartão de visita para o Dr. Cleiton Pontes. Identidade que transmite confiança.</p>
-      </div>
+      <i class="fas fa-arrow-right project-arrow"></i>
     </article>
-    
-    <article class="projeto-card" onclick="abrirModal('assets/naiara-sobral-cakes.png')">
-      <div class="projeto-img">
-        <img src="assets/naiara-sobral-cakes.png" alt="Naiara Sobral Cakes" onerror="this.src='https://placehold.co/600x800/1a1a1a/FF006E?text=CAKES'">
-        <div class="projeto-overlay">
-          <span class="zoom-text">Ampliar →</span>
+
+    <article class="project" onclick="abrirModal('assets/naiara-sobral-cakes.png', 'Naiara Sobral Cakes')">
+      <div class="project-number">02</div>
+      <div class="project-img">
+        <img src="assets/naiara-sobral-cakes.png" alt="Naiara Sobral Cakes" onerror="this.src='https://placehold.co/800x500/1a1a1a/F5E300?text=NAIARA+CAKES'">
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span>Web Design</span>
+          <span>2026</span>
         </div>
+        <h3 class="project-name">Site Institucional<br><em>Naiara Sobral Cakes</em></h3>
+        <p class="project-desc">Site responsivo que transmite delicadeza e profissionalismo para uma confeitaria artesanal que vende pelo digital.</p>
       </div>
-      <div class="projeto-info">
-        <span class="projeto-categoria">Web Design — 2026</span>
-        <h3 class="projeto-nome">Site Institucional<br>Naiara Sobral Cakes</h3>
-        <p class="projeto-desc">Site responsivo que transmite delicadeza e profissionalismo para confeitaria artesanal.</p>
-      </div>
+      <i class="fas fa-arrow-right project-arrow"></i>
     </article>
-    
-    <article class="projeto-card" onclick="abrirModal('assets/paula.png')">
-      <div class="projeto-img">
-        <img src="assets/paula.png" alt="Paula Moda Íntima" onerror="this.src='https://placehold.co/800x500/1a1a1a/3A86FF?text=PAULA+MODA'">
-        <div class="projeto-overlay">
-          <span class="zoom-text">Ampliar →</span>
+
+    <article class="project" onclick="abrirModal('assets/paula.png', 'Paula Moda Íntima')">
+      <div class="project-number">03</div>
+      <div class="project-img">
+        <img src="assets/paula.png" alt="Paula Moda Íntima" onerror="this.src='https://placehold.co/800x500/1a1a1a/F5E300?text=PAULA+MODA'">
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span>Social Media</span>
+          <span>2026</span>
         </div>
+        <h3 class="project-name">Perfil Estratégico<br><em>Paula Moda Íntima</em></h3>
+        <p class="project-desc">Organização completa de bio, link para WhatsApp e destaques profissionais focados em conversão e vendas.</p>
       </div>
-      <div class="projeto-info">
-        <span class="projeto-categoria">Social Media — 2026</span>
-        <h3 class="projeto-nome">Perfil Estratégico<br>Paula Moda Íntima</h3>
-        <p class="projeto-desc">Organização de bio, link para WhatsApp e destaques profissionais focados em vendas.</p>
-      </div>
+      <i class="fas fa-arrow-right project-arrow"></i>
     </article>
   </div>
 </section>
 
-<section class="sobre" id="sobre">
-  <div class="sobre-container">
-    <div class="sobre-texto">
-      <span class="section-label">// Sobre Mim</span>
-      <h2>Transformo perfis parados em <span>presença digital</span> que vende.</h2>
-      <p class="sobre-desc">
-        Sou Pedro Kauã, de Planaltina-GO. Ajudo negócios a se apresentarem melhor no digital, da primeira impressão ao conteúdo do dia a dia.
-      </p>
-      
-      <ul class="servicos-lista">
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="section-number">02 — Sobre</span>
+      </div>
+      <div>
+        <h2 class="section-title">Sobre <em>mim.</em></h2>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Sou Pedro Kauã, de Planaltina-GO. Ajudo negócios a se apresentarem melhor no digital, <em>da primeira impressão ao conteúdo do dia a dia.</em></p>
+        <p>Não basta apenas estar na internet. É preciso ter uma presença organizada, bonita e estratégica que converta visitantes em clientes. É isso que eu faço.</p>
+      </div>
+
+      <ul class="services">
         <li>
-          <span>Criação de sites responsivos</span>
-          <span class="numero">01</span>
+          <span class="service-num">01</span>
+          <span class="service-name">Criação de sites responsivos</span>
+          <i class="fas fa-arrow-right service-icon"></i>
         </li>
         <li>
-          <span>Organização de Instagram profissional</span>
-          <span class="numero">02</span>
+          <span class="service-num">02</span>
+          <span class="service-name">Organização profissional de Instagram</span>
+          <i class="fas fa-arrow-right service-icon"></i>
         </li>
         <li>
-          <span>Bio e destaques estratégicos</span>
-          <span class="numero">03</span>
+          <span class="service-num">03</span>
+          <span class="service-name">Bio e destaques estratégicos</span>
+          <i class="fas fa-arrow-right service-icon"></i>
         </li>
         <li>
-          <span>Posts profissionais para redes sociais</span>
-          <span class="numero">04</span>
+          <span class="service-num">04</span>
+          <span class="service-name">Posts profissionais para redes sociais</span>
+          <i class="fas fa-arrow-right service-icon"></i>
         </li>
       </ul>
     </div>
-    
-    <div class="sobre-visual">
-      <div class="card-flutuante cf-1">
-        <i class="fas fa-laptop-code"></i>
-        <span>Sites Responsivos</span>
-      </div>
-      <div class="card-flutuante cf-2">
-        <i class="fab fa-instagram"></i>
-        <span>Instagram Pro</span>
-      </div>
-      <div class="card-flutuante cf-3">
-        <i class="fas fa-palette"></i>
-        <span>Identidade Visual</span>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact" id="contato">
+  <div class="container">
+    <span class="section-number" style="display:block; text-align:center; margin-bottom:20px;">03 — Contato</span>
+    <h2 class="contact-title">
+      Seu perfil pode<br>vender mais.<br>
+      <a href="mailto:pedrokauaweb@gmail.com"><em>Me chama.</em></a>
+    </h2>
+
+    <div class="contact-grid">
+      <a href="https://wa.me/5561993148848" class="contact-item" target="_blank">
+        <i class="fab fa-whatsapp contact-item-icon"></i>
+        <span class="contact-item-label">WhatsApp</span>
+        <span class="contact-item-value">(61) 99314-8848</span>
+      </a>
+      <a href="https://instagram.com/pk.web_" class="contact-item" target="_blank">
+        <i class="fab fa-instagram contact-item-icon"></i>
+        <span class="contact-item-label">Instagram</span>
+        <span class="contact-item-value">@pk.web_</span>
+      </a>
+      <a href="mailto:pedrokauaweb@gmail.com" class="contact-item">
+        <i class="fas fa-envelope contact-item-icon"></i>
+        <span class="contact-item-label">E-mail</span>
+        <span class="contact-item-value">pedrokauaweb@gmail.com</span>
+      </a>
+      <div class="contact-item">
+        <i class="fas fa-location-dot contact-item-icon"></i>
+        <span class="contact-item-label">Localização</span>
+        <span class="contact-item-value">Planaltina — GO</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="contato" id="contato">
-  <span class="section-label">// Vamos Trabalhar Juntos</span>
-  <h2 class="contato-titulo">
-    Seu perfil pode vender mais.<br>
-    <a href="mailto:pedrokauaweb@gmail.com">Me chama.</a>
-  </h2>
-  
-  <div class="contato-grid">
-    <a href="https://wa.me/5561993148848" class="contato-item whatsapp" target="_blank">
-      <i class="fab fa-whatsapp"></i>
-      <span class="contato-label">WhatsApp</span>
-      <span class="contato-valor">(61) 99314-8848</span>
-    </a>
-    
-    <a href="https://instagram.com/pk.web_" class="contato-item instagram" target="_blank">
-      <i class="fab fa-instagram"></i>
-      <span class="contato-label">Instagram</span>
-      <span class="contato-valor">@pk.web_</span>
-    </a>
-    
-    <a href="mailto:pedrokauaweb@gmail.com" class="contato-item email">
-      <i class="fas fa-envelope"></i>
-      <span class="contato-label">E-mail</span>
-      <span class="contato-valor">pedrokauaweb@gmail.com</span>
-    </a>
-    
-    <div class="contato-item local">
-      <i class="fas fa-location-dot"></i>
-      <span class="contato-label">Localização</span>
-      <span class="contato-valor">Planaltina — GO</span>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">Pedro<span>.</span></div>
+    <div class="footer-links">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
     </div>
+    <div class="footer-copy">© 2026 · Pedro Kauã · Planaltina-GO</div>
   </div>
-</section>
-
-<footer>
-  <div class="footer-logo">PEDRO.</div>
-  <p class="footer-tag">Presença digital que vende.</p>
-  <div class="footer-links">
-    <a href="#trabalhos">Trabalhos</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#contato">Contato</a>
-  </div>
-  <p class="footer-copy">© 2026 Pedro Kauã. Planaltina-GO</p>
 </footer>
 
+<!-- MODAL -->
 <dialog class="modal" id="modal">
   <button class="modal-close" onclick="fecharModal()">✕</button>
   <img class="modal-img" id="modalImg" src="" alt="">
@@ -1037,60 +1134,33 @@ footer {
 
 <script>
 function toggleMenu() {
-  const menu = document.querySelector('.menu');
-  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-  menu.style.position = 'absolute';
-  menu.style.top = '70px';
-  menu.style.left = '0';
-  menu.style.right = '0';
-  menu.style.background = 'var(--preto)';
-  menu.style.flexDirection = 'column';
-  menu.style.padding = '20px';
-  menu.style.borderTop = '1px solid #222';
+  const menu = document.getElementById('mobileMenu');
+  const icon = document.querySelector('.menu-toggle i');
+  menu.classList.toggle('active');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-times');
 }
 
-function abrirModal(imagem) {
+function abrirModal(src, alt) {
   const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modalImg');
-  modalImg.src = imagem;
+  const img = document.getElementById('modalImg');
+  img.src = src;
+  img.alt = alt;
   modal.showModal();
+  document.body.style.overflow = 'hidden';
 }
 
 function fecharModal() {
   const modal = document.getElementById('modal');
   modal.close();
+  document.body.style.overflow = '';
 }
 
 document.getElementById('modal').addEventListener('click', function(e) {
   if (e.target === this) fecharModal();
 });
 
-// Cursor personalizado
-document.addEventListener('mousemove', (e) => {
-  const cursor = document.querySelector('.cursor');
-  if (!cursor) {
-    const newCursor = document.createElement('div');
-    newCursor.className = 'cursor';
-    newCursor.style.cssText = `
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--amarelo);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.1s;
-      mix-blend-mode: difference;
-    `;
-    document.body.appendChild(newCursor);
-  }
-  
-  const c = document.querySelector('.cursor');
-  c.style.left = e.clientX - 10 + 'px';
-  c.style.top = e.clientY - 10 + 'px';
-});
-
-// Efeito de scroll suave
+// Scroll suave
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
