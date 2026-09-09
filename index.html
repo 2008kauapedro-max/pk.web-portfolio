@@ -1,162 +1,1038 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedro Kauã | Portfólio</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedro Kauã | Web Designer & Social Media</title>
+  <meta name="description" content="Portfólio de Pedro Kauã. Web Designer e especialista em Social Media em Planaltina-GO. Presença digital que vende.">
+  
+  <!-- Fontes Modernas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* =========================================
+       VARIÁVEIS E RESET
+       ========================================= */
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #131316;
+      --bg-card: #1c1c21;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --accent: #8b5cf6; /* Violeta vibrante */
+      --accent-glow: rgba(139, 92, 246, 0.4);
+      --gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+      --border: rgba(255, 255, 255, 0.08);
+      --radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* =========================================
+       UTILITÁRIOS
+       ========================================= */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      background: rgba(139, 92, 246, 0.1);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--accent-glow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(139, 92, 246, 0.05);
+    }
+
+    /* =========================================
+       HEADER
+       ========================================= */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 11, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .menu a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .menu a:hover {
+      color: var(--text-primary);
+    }
+
+    .menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: var(--transition);
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* =========================================
+       HERO SECTION
+       ========================================= */
+    .hero {
+      padding: 10rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Efeito de brilho no fundo */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: var(--accent);
+      filter: blur(150px);
+      opacity: 0.15;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-text .intro {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-photo {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      position: absolute;
+      bottom: 20px;
+      left: -20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .tag::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    /* =========================================
+       SEÇÕES GERAIS
+       ========================================= */
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    /* =========================================
+       PORTFÓLIO (3 ESPAÇOS)
+       ========================================= */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .project {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      group: project;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      border-color: rgba(139, 92, 246, 0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .project-img {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project:hover .project-img img {
+      transform: scale(1.05);
+    }
+
+    .zoom {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 11, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+      font-weight: 600;
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+
+    .project:hover .zoom {
+      opacity: 1;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+
+    .project h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .project p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* =========================================
+       SOBRE
+       ========================================= */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .services {
+      list-style: none;
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .services li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+
+    .services li:hover {
+      border-color: var(--accent);
+      transform: translateX(8px);
+    }
+
+    .services li span {
+      font-weight: 600;
+    }
+
+    .services li b {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .mockup {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .mock-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .mock-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .mock-card i {
+      font-size: 2rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .mock-card span {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .mock-card.c1 { grid-column: span 2; }
+
+    /* =========================================
+       CONTATO
+       ========================================= */
+    .contact {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 3rem;
+    }
+
+    .contact h2 a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .c-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    .c-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .c-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .c-icon.wa { background: rgba(37, 211, 102, 0.1); color: #25d366; }
+    .c-icon.ig { background: rgba(225, 48, 108, 0.1); color: #e1306c; }
+    .c-icon.em { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+    .c-icon.lo { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+
+    .c-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .c-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .c-val {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .c-arrow {
+      margin-left: auto;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .c-card:hover .c-arrow {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .foot-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .foot-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .foot-links a:hover {
+      color: var(--accent);
+    }
+
+    .copy {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* =========================================
+       MODAL
+       ========================================= */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal[open] {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: var(--accent);
+      transform: rotate(90deg);
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+    }
+
+    /* =========================================
+       ANIMAÇÕES DE SCROLL
+       ========================================= */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================
+       RESPONSIVIDADE (MOBILE)
+       ========================================= */
+    @media (max-width: 968px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+      }
+
+      .hero-text .intro {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-btns {
+        justify-content: center;
+      }
+
+      .hero-photo {
+        order: -1;
+      }
+
+      .tag {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -20px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr; /* 1 coluna no mobile, empilhado */
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .mockup {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-secondary);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+      }
+
+      .menu.active {
+        transform: translateY(0);
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="container header-inner">
-    <a href="#inicio" class="logo">PEDRO<span>.</span></a>
-    <nav class="menu">
-      <a href="#trabalhos">Trabalhos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </div>
-</header>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo">PEDRO<span>.</span></a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="menu" id="mainMenu">
+        <a href="#trabalhos">Trabalhos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
 
-<section id="inicio" class="hero">
-  <div class="container hero-inner">
-    <div class="hero-text">
-      <span class="eyebrow">Web Designer & Social Media</span>
-      <h1>Presença digital <em>que vende.</em></h1>
-      <p class="intro">Web designer e especialista em perfis de Instagram. Organizo sua presença online para ela parecer profissional, clara e pronta para crescer.</p>
-      <div class="hero-btns">
-        <a href="https://wa.me/5561993148848" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Vamos conversar</a>
-        <a href="#trabalhos" class="btn btn-outline">Ver trabalhos ↓</a>
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text fade-in">
+        <span class="eyebrow">Web Designer & Social Media</span>
+        <h1>Presença digital <span class="gradient-text">que vende.</span></h1>
+        <p class="intro">Organizo sua presença online para ela parecer profissional, clara e pronta para crescer. Do site ao Instagram, cuido da sua primeira impressão.</p>
+        <div class="hero-btns">
+          <a href="https://wa.me/5561993148848" class="btn btn-primary" target="_blank">
+            <i class="fab fa-whatsapp"></i> Vamos conversar
+          </a>
+          <a href="#trabalhos" class="btn btn-outline">
+            Ver trabalhos <i class="fas fa-arrow-down" style="font-size: 0.8em;"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo fade-in">
+        <!-- Substitua por sua foto real em assets/perfil.png -->
+        <img src="assets/perfil.png" alt="Pedro Kauã" onerror="this.src='https://placehold.co/400x500/1c1c21/8b5cf6?text=Pedro+Kau%C3%A3'">
+        <span class="tag">Disponível para projetos</span>
       </div>
     </div>
-    <div class="hero-photo">
-      <img src="assets/perfil.png" alt="Pedro Kauã">
-      <span class="tag">Disponível</span>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="trabalhos" class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Portfólio</span>
+  <!-- PORTFÓLIO (3 ESPAÇOS DESTAQUE) -->
+  <section id="trabalhos" class="section">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="eyebrow">Portfólio Selecionado</span>
+        <h2>Trabalhos que geram <span class="gradient-text">presença.</span></h2>
+        <p>3 projetos reais que mostram como uma boa apresentação faz toda a diferença para uma marca.</p>
+      </div>
+      
+      <div class="projects">
+        <!-- PROJETO 1 -->
+        <article class="project fade-in" onclick="openModal('assets/clinica-leao-de-juda.png', 'Clínica Leão de Judá')">
+          <div class="project-img">
+            <img src="assets/clinica-leao-de-juda.png" alt="Clínica Leão de Judá" onerror="this.src='https://placehold.co/600x400/1c1c21/8b5cf6?text=Cl%C3%ADnica+Le%C3%A3o+de+Jud%C3%A1'">
+            <span class="zoom"><i class="fas fa-expand"></i> Ampliar</span>
+          </div>
+          <div class="project-content">
+            <div class="project-meta">
+              <span>Identidade Visual</span>
+              <span>2026</span>
+            </div>
+            <h3>Clínica Odontológica Leão de Judá</h3>
+            <p>Fachada e cartão de visita profissional para o Dr. Cleiton Pontes, transmitindo confiança e autoridade.</p>
+          </div>
+        </article>
+
+        <!-- PROJETO 2 -->
+        <article class="project fade-in" onclick="openModal('assets/naiara-sobral-cakes.png', 'Naiara Sobral Cakes')">
+          <div class="project-img">
+            <img src="assets/naiara-sobral-cakes.png" alt="Naiara Sobral Cakes" onerror="this.src='https://placehold.co/600x400/1c1c21/8b5cf6?text=Naiara+Sobral+Cakes'">
+            <span class="zoom"><i class="fas fa-expand"></i> Ampliar</span>
+          </div>
+          <div class="project-content">
+            <div class="project-meta">
+              <span>Web Design</span>
+              <span>2026</span>
+            </div>
+            <h3>Site Institucional — Naiara Sobral Cakes</h3>
+            <p>Site responsivo e otimizado que transmite delicadeza, profissionalismo e facilita o contato de clientes.</p>
+          </div>
+        </article>
+
+        <!-- PROJETO 3 -->
+        <article class="project fade-in" onclick="openModal('assets/paula.png', 'Paula Moda Íntima')">
+          <div class="project-img">
+            <img src="assets/paula.png" alt="Paula Moda Íntima" onerror="this.src='https://placehold.co/600x400/1c1c21/8b5cf6?text=Paula+Moda+%C3%8Dntima'">
+            <span class="zoom"><i class="fas fa-expand"></i> Ampliar</span>
+          </div>
+          <div class="project-content">
+            <div class="project-meta">
+              <span>Social Media</span>
+              <span>2026</span>
+            </div>
+            <h3>Perfil Estratégico — Paula Moda Íntima</h3>
+            <p>Organização completa de bio, link para WhatsApp e destaques profissionais focados em conversão.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="section">
+    <div class="container">
+      <div class="about">
+        <div class="fade-in">
+          <span class="eyebrow">Sobre mim</span>
+          <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Transformo ideias em <span class="gradient-text">resultados digitais.</span></h2>
+          <p class="about-text">Sou Pedro Kauã, de Planaltina-GO. Ajudo negócios a se apresentarem melhor no digital, da primeira impressão ao conteúdo do dia a dia.</p>
+          <p class="about-text">Não basta apenas estar na internet. É preciso ter uma presença organizada, bonita e estratégica que converta visitantes em clientes.</p>
+          
+          <ul class="services">
+            <li><span>Criação de Sites Responsivos</span><b>01</b></li>
+            <li><span>Organização Profissional de Instagram</span><b>02</b></li>
+            <li><span>Bio e Destaques Estratégicos</span><b>03</b></li>
+            <li><span>Artes para Redes Sociais</span><b>04</b></li>
+          </ul>
+        </div>
+        
+        <div class="mockup fade-in">
+          <div class="mock-card c1">
+            <i class="fas fa-laptop-code"></i>
+            <span>Sites que funcionam em qualquer tela</span>
+          </div>
+          <div class="mock-card">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram Profissional</span>
+          </div>
+          <div class="mock-card">
+            <i class="fas fa-palette"></i>
+            <span>Identidade Visual</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section contact">
+    <div class="container">
+      <span class="eyebrow" style="text-align: center; display: block;">Contato</span>
+      <h2 class="fade-in">Seu perfil pode vender mais. <br><a href="mailto:pedrokauaweb@gmail.com">Me chama.</a></h2>
+      
+      <div class="contact-grid fade-in">
+        <a href="https://wa.me/5561993148848" class="c-card" target="_blank">
+          <div class="c-icon wa"><i class="fab fa-whatsapp"></i></div>
+          <div class="c-info">
+            <span class="c-label">WhatsApp</span>
+            <span class="c-val">(61) 99314-8848</span>
+          </div>
+          <i class="fas fa-arrow-right c-arrow"></i>
+        </a>
+        
+        <a href="https://instagram.com/pk.web_" class="c-card" target="_blank">
+          <div class="c-icon ig"><i class="fab fa-instagram"></i></div>
+          <div class="c-info">
+            <span class="c-label">Instagram</span>
+            <span class="c-val">@pk.web_</span>
+          </div>
+          <i class="fas fa-arrow-right c-arrow"></i>
+        </a>
+        
+        <a href="mailto:pedrokauaweb@gmail.com" class="c-card">
+          <div class="c-icon em"><i class="fas fa-envelope"></i></div>
+          <div class="c-info">
+            <span class="c-label">E-mail</span>
+            <span class="c-val">pedrokauaweb@gmail.com</span>
+          </div>
+          <i class="fas fa-arrow-right c-arrow"></i>
+        </a>
+        
+        <div class="c-card" style="cursor: default;">
+          <div class="c-icon lo"><i class="fas fa-location-dot"></i></div>
+          <div class="c-info">
+            <span class="c-label">Localização</span>
+            <span class="c-val">Planaltina — GO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
       <div>
-        <h2>Trabalhos que geram presença.</h2>
-        <p>Projetos reais que mostram como uma boa apresentação faz diferença para uma marca.</p>
+        <strong class="logo" style="font-size: 1.8rem;">PEDRO<span>.</span></strong>
+        <p class="foot-tag" style="color: var(--text-secondary); margin-top: 0.5rem;">Presença digital que vende.</p>
       </div>
-    </div>
-    <div class="projects">
-      <article class="project">
-        <div class="project-img" data-image="assets/clinica-leao-de-juda.png" data-alt="Clínica Leão de Judá">
-          <img src="assets/clinica-leao-de-juda.png" alt="Clínica Leão de Judá">
-          <span class="zoom">Ampliar ↗</span>
-        </div>
-        <div class="project-meta"><span>Identidade visual</span><span>2026</span></div>
-        <h3>Clínica Odontológica Leão de Judá</h3>
-        <p>Fachada e cartão de visita para o Dr. Cleiton Pontes.</p>
-      </article>
-      <article class="project">
-        <div class="project-img" data-image="assets/naiara-sobral-cakes.png" data-alt="Naiara Sobral Cakes">
-          <img src="assets/naiara-sobral-cakes.png" alt="Naiara Sobral Cakes">
-          <span class="zoom">Ampliar ↗</span>
-        </div>
-        <div class="project-meta"><span>Web design</span><span>2026</span></div>
-        <h3>Site Institucional — Naiara Sobral Cakes</h3>
-        <p>Site responsivo que transmite delicadeza e profissionalismo.</p>
-      </article>
-      <article class="project">
-        <div class="project-img" data-image="assets/paula.png" data-alt="Paula Moda Íntima">
-          <img src="assets/paula.png" alt="Paula Moda Íntima">
-          <span class="zoom">Ampliar ↗</span>
-        </div>
-        <div class="project-meta"><span>Organização de Instagram</span><span>2026</span></div>
-        <h3>Perfil Estratégico — Paula Moda Íntima</h3>
-        <p>Organização de bio, link para WhatsApp e destaques profissionais.</p>
-      </article>
-      <article class="project">
-        <div class="project-img" data-image="assets/artes.png" data-alt="Posts Paula Moda">
-          <img src="assets/artes.png" alt="Posts Paula Moda">
-          <span class="zoom">Ampliar ↗</span>
-        </div>
-        <div class="project-meta"><span>Social Media</span><span>2026</span></div>
-        <h3>Posts Profissionais — Paula Moda Íntima</h3>
-        <p>Artes para divulgação com foco em vendas pelo WhatsApp.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="sobre" class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Sobre</span>
-      <div>
-        <h2>Sobre mim.</h2>
+      <div class="foot-links">
+        <a href="#inicio">Início</a>
+        <a href="#trabalhos">Trabalhos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
       </div>
+      <p class="copy">© 2026 Pedro Kauã. Todos os direitos reservados. Planaltina-GO</p>
     </div>
-    <div class="about">
-      <div>
-        <p class="about-text">Sou Pedro Kauã, de Planaltina-GO. Ajudo negócios a se apresentarem melhor no digital, da primeira impressão ao conteúdo do dia a dia.</p>
-        <p class="about-text">Transformo perfis parados em uma presença digital organizada, bonita e estratégica.</p>
-        <ul class="services">
-          <li><span>Criação de sites</span><b>01</b></li>
-          <li><span>Organização de Instagram</span><b>02</b></li>
-          <li><span>Bio e destaques estratégicos</span><b>03</b></li>
-          <li><span>Posts profissionais</span><b>04</b></li>
-        </ul>
-      </div>
-      <div class="mockup">
-        <div class="mock-card c1"><i class="fas fa-laptop-code"></i><span>Sites Responsivos</span></div>
-        <div class="mock-card c2"><i class="fab fa-instagram"></i><span>Instagram Profissional</span></div>
-        <div class="mock-card c3"><i class="fas fa-palette"></i><span>Identidade Visual</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<section id="contato" class="section contact">
-  <div class="container">
-    <span class="eyebrow">Contato</span>
-    <h2>Seu perfil pode vender mais. <a href="mailto:pedrokauaweb@gmail.com">Me chama.</a></h2>
-    <div class="contact-grid">
-      <a href="https://wa.me/5561993148848" class="c-card" target="_blank">
-        <div class="c-icon wa"><i class="fab fa-whatsapp"></i></div>
-        <div class="c-info"><span class="c-label">WhatsApp</span><span class="c-val">(61) 99314-8848</span></div>
-        <i class="fas fa-arrow-right c-arrow"></i>
-      </a>
-      <a href="https://instagram.com/pk.web_" class="c-card" target="_blank">
-        <div class="c-icon ig"><i class="fab fa-instagram"></i></div>
-        <div class="c-info"><span class="c-label">Instagram</span><span class="c-val">@pk.web_</span></div>
-        <i class="fas fa-arrow-right c-arrow"></i>
-      </a>
-      <a href="mailto:pedrokauaweb@gmail.com" class="c-card">
-        <div class="c-icon em"><i class="fas fa-envelope"></i></div>
-        <div class="c-info"><span class="c-label">E-mail</span><span class="c-val">pedrokauaweb@gmail.com</span></div>
-        <i class="fas fa-arrow-right c-arrow"></i>
-      </a>
-      <div class="c-card">
-        <div class="c-icon lo"><i class="fas fa-location-dot"></i></div>
-        <div class="c-info"><span class="c-label">Localização</span><span class="c-val">Planaltina — GO</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- MODAL DE IMAGEM -->
+  <dialog id="image-modal" class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Fechar modal">✕</button>
+    <img id="modal-image" src="" alt="Visualização ampliada">
+  </dialog>
 
-<footer>
-  <div class="container footer-inner">
-    <div><strong class="logo">PEDRO<span>.</span></strong><p class="foot-tag">Presença digital que vende.</p></div>
-    <div class="foot-links"><a href="#inicio">Início</a><a href="#trabalhos">Trabalhos</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></div>
-    <p class="copy">© 2026 Pedro Kauã. Planaltina-GO</p>
-  </div>
-</footer>
+  <!-- JAVASCRIPT -->
+  <script>
+    // Menu Mobile
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mainMenu = document.getElementById('mainMenu');
+    
+    mobileToggle.addEventListener('click', () => {
+      mainMenu.classList.toggle('active');
+      const icon = mobileToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
 
-<dialog id="image-modal" class="modal">
-  <button class="modal-close" id="modalClose">✕</button>
-  <img id="modal-image" src="" alt="">
-</dialog>
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainMenu.classList.remove('active');
+        const icon = mobileToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
 
-<script src="script.js"></script>
+    // Modal de Imagem
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(src, alt) {
+      modalImg.src = src;
+      modalImg.alt = alt;
+      modal.showModal();
+      document.body.style.overflow = 'hidden'; // Impede scroll do fundo
+    }
+
+    modalClose.addEventListener('click', () => {
+      modal.close();
+      document.body.style.overflow = '';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.close();
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Animação de Scroll (Intersection Observer)
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Anima apenas uma vez
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Efeito de header ao rolar
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(10, 10, 11, 0.95)';
+        header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+      } else {
+        header.style.background = 'rgba(10, 10, 11, 0.8)';
+        header.style.boxShadow = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
