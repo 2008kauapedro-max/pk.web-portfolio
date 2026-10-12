@@ -86,7 +86,7 @@ body.motion-active .hero-copy>*:nth-child(6){animation-delay:.55s}
   .hero-foot span:first-child{font-size:7px}
 }
 @media(max-width:390px){.badge-scene.physics-scene{width:min(100%,295px);height:377px;margin-top:45px}.physics-card{width:150px;height:220px}.hero-copy .hero-description{max-width:100%}}
-@media(prefers-reduced-motion:reduce){.intro{display:none!important}.motion-reveal{opacity:1!important;transform:none!important;transition:none!important}body.motion-wait .hero-copy>*{opacity:1!important;transform:none!important}body.motion-active .hero-copy>*{animation:none!important}.physics-card{will-change:auto}}
+
 
 /* Compact mobile project cards — no large empty dead zones */
 @media(max-width:620px){.project-card .project-body{min-height:0;flex:1}.project-card .project-body p{margin-bottom:12px}.project-card .project-body .details-btn{margin-top:12px}.project-grid{align-items:stretch}.project-card{display:flex;flex-direction:column}.project-card[hidden]{display:none}}
@@ -197,7 +197,7 @@ body{-webkit-overflow-scrolling:touch;overscroll-behavior-x:none;}
   .badge-scene.physics-scene{height:395px!important;}
   .badge-scene.physics-scene .physics-card{width:94px;height:147px;}
 }
-@media(prefers-reduced-motion:reduce){.motion-ready .motion-reveal,.motion-ready .motion-reveal.is-visible{opacity:1;filter:none;translate:0 0;transition:none}.project-modal[open],.project-modal[open]::backdrop,.project-card.filter-enter{animation:none!important}}
+
 
 /* Final mobile alignment: content starts near the header, badge stays alongside it. */
 @media(max-width:620px){
@@ -211,3 +211,18 @@ body{-webkit-overflow-scrolling:touch;overscroll-behavior-x:none;}
   .hero-copy{margin-top:27px;}
 }
 .project-card.filter-enter{animation-fill-mode:backwards;}
+
+/* V11: opção de movimento acessível, sem desativação silenciosa por configuração do navegador. */
+body.motion-off *,body.motion-off *::before,body.motion-off *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.motion-off .motion-ready .motion-reveal,body.motion-off.motion-ready .motion-reveal{opacity:1!important;translate:0 0!important;filter:none!important}
+body.motion-off .intro{display:none!important}
+body.motion-off #ambientDots{display:none!important}
+body.motion-off.motion-wait .hero-copy>*{opacity:1!important;transform:none!important}
+.motion-switch{border:1px solid #343434;border-radius:99px;padding:6px 10px;background:transparent;color:#999;font:10px var(--mono);letter-spacing:.2px;white-space:nowrap;cursor:pointer}
+.motion-switch:hover,.motion-switch:focus-visible{color:var(--yellow);border-color:var(--yellow)}
+
+/* V12: protege o primeiro frame e sincroniza fita/crachá com a queda. */
+body:not(.badge-drop-started) #badgeScene #strapSvg,
+body:not(.badge-drop-started) #badgeScene #physicsCard { visibility:hidden!important; }
+body.badge-drop-started #badgeScene #strapSvg,
+body.badge-drop-started #badgeScene #physicsCard { visibility:visible!important; }

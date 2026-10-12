@@ -1,7 +1,10 @@
-/* PK.WEB Motion V10: queda visível depois da intro, fita/gancho sincronizados, estilingue preservado. */
+/* PK.WEB Motion V12: intro → conteúdo → queda, sem flash do crachá na posição final. */
 (() => {
   'use strict';
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Este portfólio é uma experiência motion solicitada pelo autor.
+  // Em vez de sumir com a introdução quando o SO indica reduzir movimento,
+  // ela aparece normalmente e há um botão explícito para o visitante desligar.
+  const reduced = false;
   const body = document.body;
   const intro = document.querySelector('#intro');
   const skip = document.querySelector('#introSkip');
@@ -12,13 +15,14 @@
   function reveal() {
     if (revealed) return;
     revealed = true;
-    // A cortina leva 950ms para subir. Só depois a queda começa,
-    // assim o crachá não cai escondido atrás da tela preta.
+    // Ao iniciar a subida da cortina, os textos já começam a revelar
+    // por trás dela. A queda só começa DEPOIS da cortina ter saído,
+    // com o conteúdo parcialmente visível. Sem tela vazia, sem flash.
     setTimeout(() => {
       body.classList.remove('motion-wait');
       body.classList.add('motion-active');
-      startDrop();
-    }, 1020);
+    }, 350);
+    setTimeout(() => startDrop(), 1500);
     if (intro) {
       intro.classList.add('intro-exit');
       intro.addEventListener('transitionend', e => { if (e.target === intro) intro.classList.add('intro-done'); }, {once:true});
@@ -190,7 +194,10 @@
     s.x=0;s.vx=0;s.vy=0;
     s.angle=-7;s.va=0;
     s.falling=true;
+    // Primeiro colocamos fisicamente o crachá ACIMA da tela, ainda oculto;
+    // só então liberamos sua visibilidade antes do próximo frame.
     paint();
+    body.classList.add('badge-drop-started');
   }
   // The user must be able to skip intro without losing the badge entrance.
   const previouslyActive=revealed;
@@ -328,5 +335,12 @@
   card.addEventListener('lostpointercapture',()=>{if(s.drag)finish(s.pointerId,true)});
   // Se o navegador perder foco durante o arrasto, solta a mola mesmo assim.
   window.addEventListener('blur',()=>{if(s.drag)finish(s.pointerId,true)});
+  const motionSwitch=document.getElementById('motionSwitch');
+  motionSwitch?.addEventListener('click',()=>{
+    const disabled=body.classList.toggle('motion-off');
+    motionSwitch.textContent=disabled?'ANIMAÇÕES: OFF':'ANIMAÇÕES: ON';
+    motionSwitch.setAttribute('aria-pressed',String(!disabled));
+    if(disabled){document.querySelectorAll('.motion-reveal').forEach(el=>el.classList.add('is-visible'));}
+  });
   paint();
 })();

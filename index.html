@@ -13,10 +13,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=pk2026-v9" />
-  <link rel="stylesheet" href="motion.css?v=pkmotion10" />
-  <script defer src="script.js?v=pk2026-v9"></script>
-  <script defer src="motion.js?v=pkmotion10"></script>
+  <link rel="stylesheet" href="style.css?v=pk-motion-v11" />
+  <link rel="stylesheet" href="motion.css?v=pk-motion-v12" />
+  <script defer src="script.js?v=pk-motion-v11"></script>
+  <script defer src="motion.js?v=pk-motion-v12"></script>
+  <!-- Primeira pintura: o crachá NÃO pode surgir parado antes da queda. -->
+  <style id="badge-entrance-guard">body:not(.badge-drop-started) #badgeScene #strapSvg,body:not(.badge-drop-started) #badgeScene #physicsCard{visibility:hidden!important}</style>
 </head>
 <body>
   <canvas id="ambientDots" aria-hidden="true"></canvas>
@@ -200,7 +202,7 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="container footer-inner"><a class="footer-logo" href="#inicio">pk<span>.</span>web</a><span>© 2026 PEDRO KAUÃ — WEB & DESIGN</span><a href="#inicio">VOLTAR AO TOPO ↑</a></div></footer>
+  <footer class="footer"><div class="container footer-inner"><a class="footer-logo" href="#inicio">pk<span>.</span>web</a><span>© 2026 PEDRO KAUÃ — WEB & DESIGN</span><button class="motion-switch" id="motionSwitch" type="button" aria-pressed="true" title="Ativar ou desativar animações">ANIMAÇÕES: ON</button><a href="#inicio">VOLTAR AO TOPO ↑</a></div></footer>
 
   <dialog class="project-modal" id="projectModal" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" type="button" aria-label="Fechar detalhes">✕</button><div class="modal-art" id="modalArt"></div><div class="modal-content"><p class="section-kicker" id="modalKind"></p><h2 id="modalTitle"></h2><p id="modalInfo"></p><div class="modal-actions"><a class="primary-btn" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">Visitar projeto ↗</a><button class="outline-btn" id="modalBack" type="button">Voltar aos projetos ↑</button></div></div></dialog>
 </body>

@@ -1,9 +1,11 @@
-PK.WEB — Motion V10
+PK.WEB — Portfólio Motion V12
 
-- Intro preta sai antes do crachá cair.
-- Crachá começa totalmente acima da tela, cai, estica e balança.
-- Layout mobile à direita do título, como na imagem enviada.
-- Arrastar, soltar, estilingar, girar e desfoque lateral mantidos.
-- Compatível com Netlify Drop. Publique a pasta descompactada.
+Ajuste pontual da abertura:
+1. Tela preta apresenta o portfólio.
+2. Tela sobe e o conteúdo inicia o fade-in.
+3. Apenas depois a fita e o crachá entram caindo de cima, sem piscar no lugar antes.
 
-Para reiniciar a animação, recarregue a página pelo navegador.
+A física do estilingue, a foto, o layout desktop/mobile, os fades de scroll e os projetos foram mantidos.
+
+Para testar: extraia a pasta, abra index.html com Live Server e atualize a página.
+Na Vercel, envie os arquivos (não o ZIP dentro do repositório).
