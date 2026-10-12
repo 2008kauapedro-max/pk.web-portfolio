@@ -1,4 +1,4 @@
-/* PK.WEB Motion V12: intro → conteúdo → queda, sem flash do crachá na posição final. */
+/* PK.WEB Motion V13: entrada do crachá sincronizada e queda mais rápida. */
 (() => {
   'use strict';
   // Este portfólio é uma experiência motion solicitada pelo autor.
@@ -22,7 +22,8 @@
       body.classList.remove('motion-wait');
       body.classList.add('motion-active');
     }, 350);
-    setTimeout(() => startDrop(), 1500);
+    // A cortina leva 950 ms; começa a queda logo depois, sem espera vazia.
+    setTimeout(() => startDrop(), 1020);
     if (intro) {
       intro.classList.add('intro-exit');
       intro.addEventListener('transitionend', e => { if (e.target === intro) intro.classList.add('intro-done'); }, {once:true});
@@ -219,7 +220,7 @@
       for(let j=0;j<slices;j++){
         if(s.falling){
           // Queda sob gravidade: primeiro acelera, depois a fita para o cartão.
-          s.vy+=2050*dt;
+          s.vy+=3400*dt;
           s.y+=s.vy*dt;
           s.angle+=(-s.angle*1.8)*dt;
           if(s.y>=0){
