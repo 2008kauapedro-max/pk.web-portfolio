@@ -1,1171 +1,207 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedro Kauã — Web Designer & Social Media</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-/* ============================================
-   RESET & BASE
-   ============================================ */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --preto: #0a0a0a;
-  --preto-suave: #111111;
-  --amarelo: #F5E300;
-  --amarelo-escuro: #d4c200;
-  --branco: #f0ede4;
-  --cinza: #6b6b6b;
-  --cinza-claro: #2a2a2a;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--preto);
-  color: var(--branco);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.5;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-
-/* ============================================
-   TIPOGRAFIA EDITORIAL
-   ============================================ */
-.font-serif { font-family: 'Fraunces', serif; }
-.font-mono { font-family: 'JetBrains Mono', monospace; }
-
-/* ============================================
-   LAYOUT BASE
-   ============================================ */
-.container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-/* Linhas divisórias finas */
-.divider {
-  height: 1px;
-  background: var(--cinza-claro);
-  width: 100%;
-}
-
-/* ============================================
-   HEADER
-   ============================================ */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  padding: 24px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--cinza-claro);
-}
-
-.logo {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-}
-
-.logo span {
-  color: var(--amarelo);
-  font-style: italic;
-}
-
-.nav {
-  display: flex;
-  gap: 40px;
-}
-
-.nav a {
-  font-size: 13px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--cinza);
-  transition: color 0.3s;
-  position: relative;
-}
-
-.nav a::before {
-  content: '';
-  position: absolute;
-  left: -12px;
-  top: 50%;
-  width: 4px;
-  height: 4px;
-  background: var(--amarelo);
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.nav a:hover {
-  color: var(--branco);
-}
-
-.nav a:hover::before {
-  opacity: 1;
-}
-
-.menu-toggle {
-  display: none;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-
-/* ============================================
-   HERO
-   ============================================ */
-.hero {
-  min-height: 100vh;
-  padding: 140px 0 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-}
-
-.hero-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 60px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--cinza-claro);
-}
-
-.hero-meta {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--cinza);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.hero-meta strong {
-  color: var(--amarelo);
-  font-weight: 500;
-}
-
-.hero-status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--branco);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--amarelo);
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.3); }
-}
-
-.hero-main {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 60px;
-  align-items: end;
-  margin-bottom: 60px;
-}
-
-.hero-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(3.5rem, 9vw, 8rem);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--amarelo);
-  font-weight: 400;
-}
-
-.hero-title .linha-final {
-  display: block;
-  font-weight: 900;
-  font-style: italic;
-  color: var(--amarelo);
-}
-
-.hero-side {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: flex-start;
-}
-
-.hero-photo-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  border-radius: 4px;
-}
-
-.hero-photo-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(1.1);
-  transition: filter 0.6s ease;
-}
-
-.hero-photo-wrap:hover img {
-  filter: grayscale(0%) contrast(1);
-}
-
-.hero-photo-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,0.4) 100%);
-  pointer-events: none;
-}
-
-.hero-photo-tag {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--amarelo);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  z-index: 2;
-}
-
-.hero-desc {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--cinza);
-  max-width: 380px;
-}
-
-.hero-desc strong {
-  color: var(--branco);
-  font-weight: 600;
-}
-
-.hero-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-top: 30px;
-  border-top: 1px solid var(--cinza-claro);
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 28px;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-}
-
-.btn-primary {
-  background: var(--amarelo);
-  color: var(--preto);
-}
-
-.btn-primary:hover {
-  background: var(--branco);
-  transform: translateY(-2px);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--branco);
-  border: 1px solid var(--cinza-claro);
-}
-
-.btn-ghost:hover {
-  border-color: var(--amarelo);
-  color: var(--amarelo);
-}
-
-.hero-scroll {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--cinza);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.hero-scroll::before {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--cinza);
-}
-
-/* ============================================
-   SEÇÕES GERAIS
-   ============================================ */
-.section {
-  padding: 120px 0;
-  position: relative;
-}
-
-.section-header {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 60px;
-  margin-bottom: 80px;
-  align-items: start;
-}
-
-.section-number {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--amarelo);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  display: block;
-}
-
-.section-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.section-title em {
-  font-style: italic;
-  color: var(--amarelo);
-}
-
-.section-subtitle {
-  font-size: 16px;
-  color: var(--cinza);
-  line-height: 1.6;
-  max-width: 500px;
-  margin-top: 20px;
-}
-
-/* ============================================
-   PROJETOS (EDITORIAL)
-   ============================================ */
-.projects {
-  padding: 120px 0;
-}
-
-.project {
-  display: grid;
-  grid-template-columns: 80px 1fr 1.2fr;
-  gap: 40px;
-  padding: 60px 0;
-  border-top: 1px solid var(--cinza-claro);
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  position: relative;
-}
-
-.project:last-child {
-  border-bottom: 1px solid var(--cinza-claro);
-}
-
-.project:hover {
-  padding-left: 20px;
-}
-
-.project:hover .project-img img {
-  transform: scale(1.05);
-}
-
-.project:hover .project-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.project-number {
-  font-family: 'Fraunces', serif;
-  font-size: 48px;
-  font-weight: 400;
-  color: var(--cinza);
-  line-height: 1;
-  font-style: italic;
-}
-
-.project:hover .project-number {
-  color: var(--amarelo);
-}
-
-.project-img {
-  position: relative;
-  aspect-ratio: 16/10;
-  overflow: hidden;
-  border-radius: 4px;
-  background: var(--preto-suave);
-}
-
-.project-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.project-info {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.project-meta {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--amarelo);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.project-name {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
-.project-name em {
-  font-style: italic;
-  color: var(--amarelo);
-}
-
-.project-desc {
-  font-size: 15px;
-  color: var(--cinza);
-  line-height: 1.6;
-  max-width: 400px;
-}
-
-.project-arrow {
-  position: absolute;
-  right: 32px;
-  top: 50%;
-  transform: translateY(-50%) translateX(-20px);
-  font-size: 24px;
-  color: var(--amarelo);
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-
-/* ============================================
-   SOBRE
-   ============================================ */
-.about {
-  padding: 120px 0;
-  background: var(--preto-suave);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.about-text {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-}
-
-.about-text em {
-  font-style: italic;
-  color: var(--amarelo);
-}
-
-.about-text p + p {
-  margin-top: 30px;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  color: var(--cinza);
-  line-height: 1.7;
-}
-
-.services {
-  list-style: none;
-  margin-top: 60px;
-}
-
-.services li {
-  display: grid;
-  grid-template-columns: 40px 1fr auto;
-  gap: 20px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--cinza-claro);
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.services li:hover {
-  padding-left: 16px;
-  border-bottom-color: var(--amarelo);
-}
-
-.services li:hover .service-name {
-  color: var(--amarelo);
-}
-
-.service-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--amarelo);
-}
-
-.service-name {
-  font-size: 16px;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.service-icon {
-  font-size: 18px;
-  color: var(--cinza);
-}
-
-/* ============================================
-   CONTATO
-   ============================================ */
-.contact {
-  padding: 120px 0 80px;
-  text-align: center;
-}
-
-.contact-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  margin-bottom: 60px;
-}
-
-.contact-title em {
-  font-style: italic;
-  color: var(--amarelo);
-}
-
-.contact-title a {
-  color: var(--amarelo);
-  border-bottom: 3px solid var(--amarelo);
-  transition: all 0.3s;
-}
-
-.contact-title a:hover {
-  color: var(--branco);
-  border-bottom-color: var(--branco);
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--cinza-claro);
-  border: 1px solid var(--cinza-claro);
-  max-width: 1000px;
-  margin: 0 auto 80px;
-}
-
-.contact-item {
-  background: var(--preto);
-  padding: 40px 30px;
-  text-align: left;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.contact-item:hover {
-  background: var(--preto-suave);
-}
-
-.contact-item:hover .contact-item-icon {
-  color: var(--amarelo);
-  transform: translateY(-4px);
-}
-
-.contact-item-icon {
-  font-size: 24px;
-  color: var(--branco);
-  transition: all 0.3s ease;
-}
-
-.contact-item-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--cinza);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.contact-item-value {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--branco);
-  word-break: break-word;
-}
-
-/* ============================================
-   FOOTER
-   ============================================ */
-.footer {
-  padding: 40px 0;
-  border-top: 1px solid var(--cinza-claro);
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-logo {
-  font-family: 'Fraunces', serif;
-  font-size: 18px;
-  font-weight: 900;
-}
-
-.footer-logo span {
-  color: var(--amarelo);
-  font-style: italic;
-}
-
-.footer-copy {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--cinza);
-  letter-spacing: 1px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 30px;
-}
-
-.footer-links a {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--cinza);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: var(--amarelo);
-}
-
-/* ============================================
-   MODAL
-   ============================================ */
-.modal {
-  border: none;
-  background: transparent;
-  padding: 0;
-  margin: auto;
-  max-width: 90vw;
-  max-height: 90vh;
-}
-
-.modal::backdrop {
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(10px);
-}
-
-.modal-img {
-  max-width: 100%;
-  max-height: 90vh;
-  border-radius: 4px;
-  border: 1px solid var(--cinza-claro);
-}
-
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  background: var(--amarelo);
-  color: var(--preto);
-  border-radius: 50%;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s;
-}
-
-.modal-close:hover {
-  transform: rotate(90deg);
-}
-
-/* ============================================
-   MOBILE MENU
-   ============================================ */
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 73px;
-  left: 0;
-  right: 0;
-  background: var(--preto);
-  border-bottom: 1px solid var(--cinza-claro);
-  padding: 30px 32px;
-  z-index: 99;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.mobile-menu.active {
-  display: flex;
-}
-
-.mobile-menu a {
-  font-family: 'Fraunces', serif;
-  font-size: 28px;
-  font-weight: 400;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--cinza-claro);
-}
-
-.mobile-menu a:hover {
-  color: var(--amarelo);
-}
-
-/* ============================================
-   RESPONSIVIDADE
-   ============================================ */
-@media (max-width: 968px) {
-  .container { padding: 0 24px; }
-  
-  .nav { display: none; }
-  .menu-toggle { display: flex; }
-  
-  .hero-main {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .hero-side {
-    align-items: flex-start;
-  }
-  
-  .hero-photo-wrap {
-    max-width: 300px;
-  }
-  
-  .section-header {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .project {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 40px 0;
-  }
-  
-  .project-number {
-    font-size: 36px;
-  }
-  
-  .project-arrow {
-    display: none;
-  }
-  
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-  
-  .contact-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .section, .projects, .about, .contact {
-    padding: 80px 0;
-  }
-}
-
-@media (max-width: 560px) {
-  .container { padding: 0 20px; }
-  .header { padding: 20px; }
-  
-  .hero { padding: 110px 0 60px; }
-  
-  .hero-top {
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .hero-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .btn {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .contact-item {
-    padding: 30px 24px;
-  }
-  
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .footer-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#090a0b" />
+  <meta name="description" content="Pedro Kauã — Web design, identidade visual e design gráfico. Sites e experiências visuais para marcas que querem se destacar." />
+  <meta property="og:title" content="Pedro Kauã — Web & Design" />
+  <meta property="og:description" content="Sites, identidade visual e design para marcas." />
+  <meta property="og:type" content="website" />
+  <title>Pedro Kauã — Web & Design</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=pk2026-v9" />
+  <link rel="stylesheet" href="motion.css?v=pkmotion10" />
+  <script defer src="script.js?v=pk2026-v9"></script>
+  <script defer src="motion.js?v=pkmotion10"></script>
 </head>
 <body>
-
-<!-- HEADER -->
-<header class="header">
-  <a href="#inicio" class="logo">PK<span>.</span></a>
-  <nav class="nav">
-    <a href="#trabalhos">Trabalhos</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#contato">Contato</a>
-  </nav>
-  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
-    <i class="fas fa-bars"></i>
-  </button>
-</header>
-
-<nav class="mobile-menu" id="mobileMenu">
-  <a href="#trabalhos" onclick="toggleMenu()">Trabalhos</a>
-  <a href="#sobre" onclick="toggleMenu()">Sobre</a>
-  <a href="#contato" onclick="toggleMenu()">Contato</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="container">
-    <div class="hero-top">
-      <div class="hero-meta">
-        <strong>Pedro Kauã</strong> — Web Designer & Social Media<br>
-        Planaltina, GO · Brasil
-      </div>
-      <div class="hero-status">
-        <span class="status-dot"></span>
-        Disponível para projetos
-      </div>
+  <canvas id="ambientDots" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#inicio">Pular para conteúdo</a>
+  <div class="intro" id="intro" aria-label="Apresentação animada do portfólio">
+    <div class="intro-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="intro-halo" aria-hidden="true"></div>
+    <div class="intro-inner">
+      <div class="intro-icons" aria-hidden="true"><span>↗</span><span>✳</span><span>◉</span></div>
+      <span class="intro-overline">PK.WEB / DESIGN & DIGITAL</span>
+      <div class="intro-title"><span class="intro-row">Bem-vindo ao</span><span class="intro-row intro-row-accent">meu portfólio<span class="yellow">.</span></span></div>
+      <span class="intro-url">PEDRO KAUÃ <b>✳</b> CRIATIVIDADE QUE SE MOVE</span>
     </div>
+    <div class="intro-progress" aria-hidden="true"><span></span></div>
+    <button class="intro-skip" id="introSkip" type="button">Pular intro ↗</button>
+    <div class="intro-bottom" aria-hidden="true"><span>PK — 2026</span><span>CARREGANDO EXPERIÊNCIA</span></div>
+  </div>
 
-    <div class="hero-main">
-      <h1 class="hero-title">
-        Presença<br>
-        digital que<br>
-        <span class="linha-final">vende.</span>
-      </h1>
-      <div class="hero-side">
-        <div class="hero-photo-wrap">
-          <img src="assets/perfil.png" alt="Pedro Kauã" onerror="this.src='https://placehold.co/400x500/1a1a1a/F5E300?text=PEDRO'">
-          <span class="hero-photo-tag">© 2026 · PK</span>
+  <header class="site-header" id="topo">
+    <nav class="nav-shell" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="PK Web, início">pk<span>.</span>web <span class="brand-mark">✳</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#inicio" data-nav="inicio" class="active">Início</a>
+        <a href="#sobre" data-nav="sobre">Sobre</a>
+        <a href="#portfolio" data-nav="portfolio">Portfólio</a>
+        <a href="#contato" data-nav="contato">Contato</a>
+      </div>
+      <a class="nav-cta" href="https://instagram.com/pk.web_" target="_blank" rel="noopener noreferrer" aria-label="Instagram profissional"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <button class="nav-mobile" id="menuButton" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu"><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero section-grid" aria-labelledby="heroTitle">
+      <div class="container hero-container">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="star">✧</span> CRIATIVIDADE COM PROPÓSITO</p>
+          <h1 id="heroTitle">Web Design<span class="dot">.</span><br><span class="hero-muted">Identidade</span><br>Visual<span class="dot">.</span></h1>
+          <p class="hero-role"><span class="yellow">●</span> Pedro Kauã <span class="slash">/</span> Designer & Web Creator</p>
+          <p class="hero-description">Transformo ideias em <strong>sites, marcas e peças visuais</strong> com estética limpa, personalidade e foco no que importa para o seu negócio.</p>
+          <div class="tag-list" aria-label="Especialidades"><span>Web Design</span><span>Identidade visual</span><span>Design gráfico</span></div>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#portfolio">Explorar projetos <span aria-hidden="true">↗</span></a>
+            <a class="text-btn" href="#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-        <p class="hero-desc">
-          <strong>Organizo sua presença online</strong> para ela parecer profissional, clara e pronta para crescer. Do site ao Instagram, cuido da sua primeira impressão.
-        </p>
-      </div>
-    </div>
 
-    <div class="hero-bottom">
-      <div class="hero-cta">
-        <a href="https://wa.me/5561993148848" class="btn btn-primary" target="_blank">
-          <i class="fab fa-whatsapp"></i> Vamos conversar
-        </a>
-        <a href="#trabalhos" class="btn btn-ghost">
-          Ver trabalhos
-        </a>
-      </div>
-      <div class="hero-scroll">Role para baixo</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PROJETOS -->
-<section class="projects" id="trabalhos">
-  <div class="container">
-    <div class="section-header">
-  <h2 class="section-title">Projetos que geram <em>presença</em> real.</h2>
-  <p class="section-subtitle"></p>
-</div>
-
-    <article class="project" onclick="abrirModal('assets/clinica-leao-de-juda.png', 'Clínica Leão de Judá')">
-      <div class="project-number">01</div>
-      <div class="project-img">
-        <img src="assets/clinica-leao-de-juda.png" alt="Clínica Leão de Judá" onerror="this.src='https://placehold.co/800x500/1a1a1a/F5E300?text=LEAO+DE+JUDA'">
-      </div>
-      <div class="project-info">
-        <div class="project-meta">
-          <span>Identidade Visual</span>
-          <span>2026</span>
+        <div class="badge-scene physics-scene" id="badgeScene" aria-label="Crachá interativo: arraste e solte para balançar">
+          <!-- Fita e mosquetão compartilhando o mesmo sistema de coordenadas: sem desconexão. -->
+          <svg class="strap-svg" id="strapSvg" aria-hidden="true" viewBox="0 0 520 570" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="strapThread" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#010101"/><stop offset=".18" stop-color="#16181a"/><stop offset=".45" stop-color="#2c2d30"/><stop offset=".71" stop-color="#0c0d0e"/><stop offset="1" stop-color="#020202"/>
+              </linearGradient>
+              <linearGradient id="chrome" x1="0" y1="0" x2="1" y2=".8">
+                <stop offset="0" stop-color="#c5c7ca"/><stop offset=".16" stop-color="#31363a"/><stop offset=".36" stop-color="#0b0c0f"/><stop offset=".59" stop-color="#6f777c"/><stop offset=".79" stop-color="#111315"/><stop offset="1" stop-color="#afb2b5"/>
+              </linearGradient>
+              <linearGradient id="chromeSheen" x1="0" y1="0" x2="0.85" y2="1">
+                <stop offset="0" stop-color="#9da2a6"/><stop offset=".42" stop-color="#101114"/><stop offset=".69" stop-color="#a0a5ab"/><stop offset="1" stop-color="#0a0b0d"/>
+              </linearGradient>
+            </defs>
+            <path id="strapEdge" fill="none" stroke="#030303" stroke-width="35" stroke-linecap="butt"/>
+            <path id="strapFabric" fill="none" stroke="url(#strapThread)" stroke-width="31" stroke-linecap="butt"/>
+            <path id="strapHighlight" fill="none" stroke="#8e9294" stroke-width="1.5" stroke-opacity=".15"/>
+            <path id="strapPath" d="M260 -200 V150" fill="none" stroke="none" />
+            <text id="strapInk" fill="#ced0d0" font-size="10.8" font-family="monospace" font-weight="700" letter-spacing="1.3" opacity=".82"><textPath href="#strapPath" startOffset="22%">PK.WEB　✳　PK.WEB　✳　PK.WEB　✳</textPath></text>
+            <!-- O topo do mosquetão nasce no ponto exato onde a fita termina. -->
+            <g id="hardware" filter="url(#none)">
+              <path d="M-16 -1 L16 -1 16 15 Q16 19 10 21 L-10 21 Q-16 19 -16 15 Z" fill="#111315" stroke="#52575a" stroke-width="1.1"/>
+              <path d="M-14 4 H14" stroke="#92989e" stroke-opacity=".24" stroke-width="1"/>
+              <path d="M-14 14 C-16 28 -10 37 0 37 C10 37 16 28 14 14" fill="none" stroke="#07080a" stroke-width="12" stroke-linecap="round"/>
+              <path d="M-14 14 C-16 28 -10 37 0 37 C10 37 16 28 14 14" fill="none" stroke="url(#chrome)" stroke-width="7" stroke-linecap="round"/>
+              <ellipse cx="0" cy="36.5" rx="5.5" ry="5" fill="url(#chromeSheen)" stroke="#070709" stroke-width="1.3"/>
+              <path d="M0 40 C-9 42 -13 48 -11 56 C-9 65 4 69 11 61" fill="none" stroke="#020304" stroke-width="11" stroke-linecap="round"/>
+              <path d="M0 40 C-9 42 -13 48 -11 56 C-9 65 4 69 11 61" fill="none" stroke="url(#chrome)" stroke-width="7" stroke-linecap="round"/>
+              <path d="M10.8 61 L5.5 48.5" stroke="#0b0e12" stroke-width="5.5" stroke-linecap="round"/>
+              <path d="M9 58 L5.8 49.5" stroke="#9a9ea6" stroke-opacity=".7" stroke-width="1.1" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <div class="physics-card" id="physicsCard" draggable="false" tabindex="0" aria-label="Crachá de Pedro Kauã. Segure e arraste a foto para balançar e solte para ele voltar com efeito de estilingue.">
+          <div class="badge-3d" id="badge3d">
+              <div class="badge-face badge-front badge-front-clean">
+                <div class="badge-hole"><span></span></div>
+                <div class="badge-photo badge-photo-full"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/perfil.png" alt="Foto de Pedro Kauã" draggable="false" decoding="async" onerror="this.remove()"/><span class="photo-fallback">PK<span>.</span></span></div>
+              </div>
+              <div class="badge-face badge-back badge-back-clean">
+                <div class="badge-hole"><span></span></div>
+                <div class="badge-back-texture" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+          <span class="badge-index">ARRASTE • SOLTE • ESTILINGUE</span>
         </div>
-        <h3 class="project-name">Clínica Odontológica<br><em>Leão de Judá</em></h3>
-        <p class="project-desc">Fachada e cartão de visita para o Dr. Cleiton Pontes. Identidade que transmite confiança e autoridade no consultório.</p>
       </div>
-      <i class="fas fa-arrow-right project-arrow"></i>
-    </article>
+      <div class="hero-foot container"><span>↘ EXPLORE MEUS TRABALHOS</span><a href="#sobre" aria-label="Ir para Sobre">SCROLL <span class="down-arrow">↓</span></a><span class="hero-year">PLANALTINA, GO — BR</span></div>
+    </section>
 
-    <article class="project" onclick="abrirModal('assets/naiara-sobral-cakes.png', 'Naiara Sobral Cakes')">
-      <div class="project-number">02</div>
-      <div class="project-img">
-        <img src="assets/naiara-sobral-cakes.png" alt="Naiara Sobral Cakes" onerror="this.src='https://placehold.co/800x500/1a1a1a/F5E300?text=NAIARA+CAKES'">
-      </div>
-      <div class="project-info">
-        <div class="project-meta">
-          <span>Web Design</span>
-          <span>2026</span>
+    <section class="about section-grid" id="sobre" aria-labelledby="aboutTitle">
+      <div class="container">
+        <p class="section-kicker">01 / SOBRE MIM</p>
+        <div class="about-layout">
+          <div class="about-copy">
+            <h2 class="section-title" id="aboutTitle">Prazer,<br>sou <em>Pedro<br>Kauã<span class="dot">.</span></em></h2>
+            <p>Sou designer e desenvolvedor web de Planaltina, Goiás. Gosto de criar projetos com <strong>visual forte, navegação simples e atenção aos detalhes.</strong></p>
+            <p>Meu trabalho une a parte visual e a parte prática: da identidade de uma marca até a experiência de quem acessa seu site ou encontra seu negócio nas redes.</p>
+            <div class="about-buttons"><a class="primary-btn" href="#contato">Iniciar um projeto <span>↗</span></a><a class="outline-btn" href="#portfolio">Ver meus trabalhos <span>↗</span></a></div>
+          </div>
+          <div class="about-aside">
+            <div class="about-avatar"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/perfil.png" alt="Pedro Kauã" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('is-fallback')"/><span>PK<span class="yellow">.</span></span></div>
+            <span class="micro-tag">FOCADO EM EXPERIÊNCIAS DIGITAIS</span>
+          </div>
         </div>
-        <h3 class="project-name">Site Institucional<br><em>Naiara Sobral Cakes</em></h3>
-        <p class="project-desc">Site responsivo que transmite delicadeza e profissionalismo para uma confeitaria artesanal que vende pelo digital.</p>
-      </div>
-      <i class="fas fa-arrow-right project-arrow"></i>
-    </article>
-
-    <article class="project" onclick="abrirModal('assets/paula.png', 'Paula Moda Íntima')">
-      <div class="project-number">03</div>
-      <div class="project-img">
-        <img src="assets/paula.png" alt="Paula Moda Íntima" onerror="this.src='https://placehold.co/800x500/1a1a1a/F5E300?text=PAULA+MODA'">
-      </div>
-      <div class="project-info">
-        <div class="project-meta">
-          <span>Social Media</span>
-          <span>2026</span>
+        <div class="specialty-grid">
+          <a href="#portfolio" data-quick-filter="web" class="specialty"><div><span class="specialty-icon">↗</span><span>01</span></div><strong>Sites & páginas</strong><small>Responsivos, claros e intuitivos.</small></a>
+          <a href="#portfolio" data-quick-filter="brand" class="specialty"><div><span class="specialty-icon">✳</span><span>02</span></div><strong>Identidade visual</strong><small>Marcas com personalidade.</small></a>
+          <a href="#portfolio" data-quick-filter="graphic" class="specialty"><div><span class="specialty-icon">◈</span><span>03</span></div><strong>Design gráfico</strong><small>Artes e presença nas redes.</small></a>
         </div>
-        <h3 class="project-name">Perfil Estratégico<br><em>Paula Moda Íntima</em></h3>
-        <p class="project-desc">Organização completa de bio, link para WhatsApp e destaques profissionais focados em conversão e vendas.</p>
       </div>
-      <i class="fas fa-arrow-right project-arrow"></i>
-    </article>
-  </div>
-</section>
+    </section>
 
-<!-- SOBRE -->
-<section class="about" id="sobre">
-  <div class="container">
-    <div class="section-header">
-      <div>
-        <span class="section-number"></span>
+    <section class="portfolio section-grid" id="portfolio" aria-labelledby="portfolioTitle">
+      <div class="container portfolio-container">
+        <p class="section-kicker center">02 / TRABALHOS SELECIONADOS</p>
+        <h2 class="section-title center" id="portfolioTitle">Meu <span class="yellow">portfólio.</span></h2>
+        <p class="section-sub center">Um pouco do que faço: sites, conceitos visuais, organização digital e projetos autorais.</p>
+        <div class="filter-tabs" aria-label="Filtrar projetos" role="group">
+          <button type="button" class="tab is-active" data-filter="all" aria-pressed="true">Todos <span>06</span></button>
+          <button type="button" class="tab" data-filter="web" aria-pressed="false">Web design</button>
+          <button type="button" class="tab" data-filter="brand" aria-pressed="false">Identidade visual</button>
+          <button type="button" class="tab" data-filter="graphic" aria-pressed="false">Design gráfico</button>
+        </div>
+        <div class="project-grid">
+          <article class="project-card" data-category="web" data-title="FIO — Gestão para barbearias" data-kind="Projeto autoral / Plataforma web" data-info="Plataforma de gestão para barbearias, com agenda e experiência pensada para o dia a dia do negócio." data-link="https://usefio.vercel.app/" data-visual="fio">
+            <div class="project-media visual-fio"><div class="mock-window"><div class="mock-browser"><span></span><span></span><span></span><em>FIO / PAINEL</em></div><div class="mock-side"><b>fio<span>.</span></b><div class="mock-line"></div><div class="mock-line"></div><div class="mock-line small"></div></div><div class="mock-graph"><div class="mock-heading"></div><div class="mock-stats"><i></i><i></i><i></i></div><div class="mock-calendar"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><span class="project-badge">PROJETO AUTORAL</span></div>
+            <div class="project-body"><div class="project-head"><span>WEB / SISTEMA</span><span>01 — 06</span></div><h3>FIO — Gestão para barbearias</h3><p>Produto digital, organização e experiência de uso.</p><button class="details-btn" type="button" aria-label="Ver detalhes de FIO">Ver projeto <span>↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="web" data-title="Naiara Sobral Cakes" data-kind="Web design / Site de confeitaria" data-info="Projeto de site com apresentação responsiva e foco em destacar a identidade de uma confeitaria." data-image="naiara-sobral-cakes.png">
+            <div class="project-media image-frame"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/naiara-sobral-cakes.png" loading="lazy" decoding="async" alt="Projeto de site Naiara Sobral Cakes" onerror="this.style.display='none'"/><div class="image-fallback">NAIARA <span>CAKES</span></div><span class="project-badge">SITE RESPONSIVO</span></div>
+            <div class="project-body"><div class="project-head"><span>WEB DESIGN</span><span>02 — 06</span></div><h3>Naiara Sobral Cakes</h3><p>Uma presença digital delicada, clara e personalizada.</p><button class="details-btn" type="button" aria-label="Ver detalhes Naiara Sobral Cakes">Ver projeto <span>↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="brand" data-title="PK.WEB — Identidade autoral" data-kind="Identidade visual / Marca pessoal" data-info="Identidade autoral em preto e amarelo, com linguagem minimalista, tipografia marcante e elementos visuais simples." data-visual="pk">
+            <div class="project-media visual-pk"><span class="little-note">IDENTIDADE VISUAL / 2026</span><div class="pk-logo">PK<span>.</span><div>WEB DESIGN<br>& VISUAL</div></div><div class="visual-pk-bottom"><span>BLACK / YELLOW</span><span>CREATIVE STUDIO ◈</span></div><span class="project-badge">IDENTIDADE AUTORAL</span></div>
+            <div class="project-body"><div class="project-head"><span>IDENTIDADE VISUAL</span><span>03 — 06</span></div><h3>PK.WEB — Marca pessoal</h3><p>Tipografia, contraste e linguagem visual própria.</p><button class="details-btn" type="button" aria-label="Ver detalhes PK WEB">Ver projeto <span>↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="graphic" data-title="Paula Moda Íntima" data-kind="Design para redes / Organização digital" data-info="Trabalho de apresentação e organização de perfil, com elementos visuais para fortalecer a presença digital da loja." data-image="paula.png">
+            <div class="project-media image-frame soft-purple"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/paula.png" loading="lazy" decoding="async" alt="Visual do projeto Paula Moda Íntima" onerror="this.style.display='none'"/><div class="image-fallback">PAULA <span>MODA ÍNTIMA</span></div><span class="project-badge">DESIGN / REDES</span></div>
+            <div class="project-body"><div class="project-head"><span>DESIGN GRÁFICO</span><span>04 — 06</span></div><h3>Paula Moda Íntima</h3><p>Organização e presença visual para redes sociais.</p><button class="details-btn" type="button" aria-label="Ver detalhes Paula Moda Íntima">Ver projeto <span>↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="web" data-title="Clínica Leão de Judá" data-kind="Web design / Apresentação digital" data-info="Layout de site na área de serviços, com foco em hierarquia visual e navegação objetiva." data-image="clinica-leao-de-juda.png">
+            <div class="project-media image-frame"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/clinica-leao-de-juda.png" loading="lazy" decoding="async" alt="Projeto visual da Clínica Leão de Judá" onerror="this.style.display='none'"/><div class="image-fallback">CLÍNICA <span>LEÃO DE JUDÁ</span></div><span class="project-badge">LAYOUT WEB</span></div>
+            <div class="project-body"><div class="project-head"><span>WEB DESIGN</span><span>05 — 06</span></div><h3>Clínica Leão de Judá</h3><p>Estrutura limpa e apresentação profissional de serviços.</p><button class="details-btn" type="button" aria-label="Ver detalhes Clínica Leão de Judá">Ver projeto <span>↗</span></button></div>
+          </article>
+          <article class="project-card" data-category="graphic" data-title="Artes para redes sociais" data-kind="Design gráfico / Conteúdo digital" data-info="Seleção de peças gráficas criadas para comunicação digital, com atenção à composição, tipografia e consistência visual." data-image="artes.png">
+            <div class="project-media image-frame"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/artes.png" loading="lazy" decoding="async" alt="Peças de design gráfico para redes sociais" onerror="this.style.display='none'"/><div class="image-fallback">DESIGN <span>SOCIAL MEDIA</span></div><span class="project-badge">PEÇAS GRÁFICAS</span></div>
+            <div class="project-body"><div class="project-head"><span>DESIGN GRÁFICO</span><span>06 — 06</span></div><h3>Artes para redes sociais</h3><p>Composições visuais para comunicar com mais impacto.</p><button class="details-btn" type="button" aria-label="Ver detalhes Artes para redes sociais">Ver projeto <span>↗</span></button></div>
+          </article>
+        </div>
+        <p class="portfolio-note">✳ Projetos selecionados do meu trabalho e do meu portfólio pessoal.</p>
       </div>
-      <div>
-        <h2 class="section-title">Sobre <em>mim.</em></h2>
+    </section>
+
+    <section class="contact section-grid" id="contato" aria-labelledby="contactTitle">
+      <div class="container contact-container"><p class="section-kicker center">03 / FALE COMIGO</p><h2 class="section-title center" id="contactTitle">Vamos criar algo<br><span class="yellow">bem feito?</span></h2><p class="section-sub center">Seu próximo projeto começa com uma boa conversa. Me conta sua ideia.</p>
+        <div class="contact-layout">
+          <div class="contact-info"><span class="contact-label">CANAIS DE CONTATO</span><h3>Vamos tirar sua<br>ideia do papel<span class="yellow">.</span></h3><p>Quer um site, uma marca nova ou uma identidade mais organizada para o seu negócio? Me chama e a gente conversa.</p>
+            <a href="https://wa.me/5561993148848" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><strong>(61) 99314-8848</strong><span>↗</span></a>
+            <a href="https://instagram.com/pk.web_" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@pk.web_</strong><span>↗</span></a>
+            <a href="mailto:pedrokauaweb@gmail.com"><span>E-mail</span><strong>pedrokauaweb@gmail.com</strong><span>↗</span></a>
+            <div class="contact-location">◉ PLANALTINA — GO / ATENDIMENTO ONLINE</div>
+          </div>
+          <form id="contactForm" class="contact-form">
+            <div class="form-title"><span>BRIEFING RÁPIDO</span><span>↗</span></div>
+            <label>Seu nome <input type="text" name="name" placeholder="Como posso te chamar?" maxlength="70" required autocomplete="name" /></label>
+            <label>O que você precisa? <select name="service" required><option value="" selected disabled>Selecione um serviço</option><option>Criação de site</option><option>Identidade visual</option><option>Design gráfico / Redes sociais</option><option>Outro projeto</option></select></label>
+            <label>Me conta sobre sua ideia <textarea name="details" rows="4" maxlength="1200" placeholder="Um resumo simples do projeto..." required></textarea></label>
+            <button class="primary-btn submit-btn" type="submit">Enviar pelo WhatsApp <span>↗</span></button>
+            <p class="form-note">Ao enviar, o WhatsApp abre com sua mensagem pronta. Nenhum dado é armazenado neste site.</p>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="about-grid">
-      <div class="about-text">
-        <p>Sou Pedro Kauã, de Planaltina-GO. Ajudo negócios a se apresentarem melhor no digital, <em>da primeira impressão ao conteúdo do dia a dia.</em></p>
-        <p>Não basta apenas estar na internet. É preciso ter uma presença organizada, bonita e estratégica que converta visitantes em clientes. É isso que eu faço.</p>
-      </div>
+  <footer class="footer"><div class="container footer-inner"><a class="footer-logo" href="#inicio">pk<span>.</span>web</a><span>© 2026 PEDRO KAUÃ — WEB & DESIGN</span><a href="#inicio">VOLTAR AO TOPO ↑</a></div></footer>
 
-      <ul class="services">
-        <li>
-          <span class="service-num">01</span>
-          <span class="service-name">Criação de sites responsivos</span>
-          <i class="fas fa-arrow-right service-icon"></i>
-        </li>
-        <li>
-          <span class="service-num">02</span>
-          <span class="service-name">Organização profissional de Instagram</span>
-          <i class="fas fa-arrow-right service-icon"></i>
-        </li>
-        <li>
-          <span class="service-num">03</span>
-          <span class="service-name">Bio e destaques estratégicos</span>
-          <i class="fas fa-arrow-right service-icon"></i>
-        </li>
-        <li>
-          <span class="service-num">04</span>
-          <span class="service-name">Posts profissionais para redes sociais</span>
-          <i class="fas fa-arrow-right service-icon"></i>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATO -->
-<section class="contact" id="contato">
-  <div class="container">
-    <span class="section-number" style="display:block; text-align:center; margin-bottom:20px;"></span>
-    <h2 class="contact-title">
-      Seu perfil pode<br>vender mais.<br>
-      <a href="mailto:pedrokauaweb@gmail.com"><em>Me chama.</em></a>
-    </h2>
-
-    <div class="contact-grid">
-      <a href="https://wa.me/5561993148848" class="contact-item" target="_blank">
-        <i class="fab fa-whatsapp contact-item-icon"></i>
-        <span class="contact-item-label">WhatsApp</span>
-        <span class="contact-item-value">(61) 99314-8848</span>
-      </a>
-      <a href="https://instagram.com/pk.web_" class="contact-item" target="_blank">
-        <i class="fab fa-instagram contact-item-icon"></i>
-        <span class="contact-item-label">Instagram</span>
-        <span class="contact-item-value">@pk.web_</span>
-      </a>
-      <a href="mailto:pedrokauaweb@gmail.com" class="contact-item">
-        <i class="fas fa-envelope contact-item-icon"></i>
-        <span class="contact-item-label">E-mail</span>
-        <span class="contact-item-value">pedrokauaweb@gmail.com</span>
-      </a>
-      <div class="contact-item">
-        <i class="fas fa-location-dot contact-item-icon"></i>
-        <span class="contact-item-label">Localização</span>
-        <span class="contact-item-value">Planaltina — GO</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-logo">PK<span>.</span></div>
-    <div class="footer-links">
-      <a href="#trabalhos">Trabalhos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
-    </div>
-    <div class="footer-copy">© 2026 · Pedro Kauã · Planaltina-GO</div>
-  </div>
-</footer>
-
-<!-- MODAL -->
-<dialog class="modal" id="modal">
-  <button class="modal-close" onclick="fecharModal()">✕</button>
-  <img class="modal-img" id="modalImg" src="" alt="">
-</dialog>
-
-<script>
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const icon = document.querySelector('.menu-toggle i');
-  menu.classList.toggle('active');
-  icon.classList.toggle('fa-bars');
-  icon.classList.toggle('fa-times');
-}
-
-function abrirModal(src, alt) {
-  const modal = document.getElementById('modal');
-  const img = document.getElementById('modalImg');
-  img.src = src;
-  img.alt = alt;
-  modal.showModal();
-  document.body.style.overflow = 'hidden';
-}
-
-function fecharModal() {
-  const modal = document.getElementById('modal');
-  modal.close();
-  document.body.style.overflow = '';
-}
-
-document.getElementById('modal').addEventListener('click', function(e) {
-  if (e.target === this) fecharModal();
-});
-
-// Scroll suave
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-</script>
-
+  <dialog class="project-modal" id="projectModal" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" type="button" aria-label="Fechar detalhes">✕</button><div class="modal-art" id="modalArt"></div><div class="modal-content"><p class="section-kicker" id="modalKind"></p><h2 id="modalTitle"></h2><p id="modalInfo"></p><div class="modal-actions"><a class="primary-btn" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">Visitar projeto ↗</a><button class="outline-btn" id="modalBack" type="button">Voltar aos projetos ↑</button></div></div></dialog>
 </body>
 </html>

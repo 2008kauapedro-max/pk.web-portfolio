@@ -1,0 +1,9 @@
+PK.WEB — Motion V10
+
+- Intro preta sai antes do crachá cair.
+- Crachá começa totalmente acima da tela, cai, estica e balança.
+- Layout mobile à direita do título, como na imagem enviada.
+- Arrastar, soltar, estilingar, girar e desfoque lateral mantidos.
+- Compatível com Netlify Drop. Publique a pasta descompactada.
+
+Para reiniciar a animação, recarregue a página pelo navegador.

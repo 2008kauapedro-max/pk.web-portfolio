@@ -1,0 +1,213 @@
+/* PK.WEB Motion Edition — visual editorial, movimento físico progressivo */
+:root{--motion-ease:cubic-bezier(.2,.76,.22,1)}
+html{scroll-behavior:smooth}
+body{isolation:isolate}
+#ambientDots{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.8}
+.site-header,main,.footer{position:relative;z-index:1}
+.site-header{position:fixed;z-index:100}
+/* INTRO: motion typography / cinematic stage wipe */
+.intro{position:fixed;z-index:1200;inset:0;display:grid;place-items:center;background:#030303;pointer-events:auto;visibility:visible;opacity:1;transform:translate3d(0,0,0);transition:transform 950ms cubic-bezier(.76,0,.18,1),visibility 950ms;overflow:hidden}
+.intro:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.9%,rgba(255,255,255,.04) 50%,transparent 50.1%),linear-gradient(0deg,transparent 49.9%,rgba(255,255,255,.035) 50%,transparent 50.1%);background-size:60px 60px;opacity:.25;animation:introGrid 2.5s ease both}
+.intro-halo{position:absolute;left:50%;top:50%;width:min(680px,90vw);height:min(680px,90vw);border-radius:50%;border:1px solid #f3eb0020;transform:translate(-50%,-50%);box-shadow:0 0 120px #f3eb0010,inset 0 0 110px #f3eb0007;animation:haloMove 2.5s ease-in-out both}
+.intro-halo:after{content:"";position:absolute;inset:15%;border:1px dashed #fff1;border-radius:50%}
+.intro-lines{position:absolute;inset:0;pointer-events:none}.intro-lines i{position:absolute;height:1px;background:linear-gradient(90deg,transparent,var(--yellow),transparent);width:120%;left:-110%;top:25%;animation:lineStreak 1.15s ease-out .25s both}.intro-lines i:nth-child(2){top:69%;animation-delay:.57s}.intro-lines i:nth-child(3){top:87%;animation-delay:.9s}
+.intro-inner{text-align:center;position:relative;z-index:2;width:min(94%,760px);transform:none}
+.intro-icons{display:flex;justify-content:center;gap:10px;margin-bottom:28px}.intro-icons span{width:36px;height:36px;display:grid;place-items:center;border:1px solid #393a3d;border-radius:50%;font:17px var(--mono);background:#101112;opacity:0;animation:popUp .6s var(--motion-ease) forwards}.intro-icons span:nth-child(2){animation-delay:.17s}.intro-icons span:nth-child(3){animation-delay:.32s}
+.intro-overline{display:block;font:clamp(8px,.75vw,11px) var(--mono);letter-spacing:.28em;color:#999a9c;margin-bottom:19px;opacity:0;animation:popUp .65s var(--motion-ease) .3s forwards}
+.intro-title{overflow:hidden}.intro-row{display:block;font:clamp(33px,5vw,76px)/1.15 var(--display);letter-spacing:-.055em;color:#f2f2f1;transform:translateY(130%);animation:introReveal .78s cubic-bezier(.18,.8,.16,1) .45s forwards}.intro-row-accent{animation-delay:.67s}.intro-row .yellow{color:var(--yellow)}
+.intro-url{display:inline-flex;gap:14px;align-items:center;font:clamp(8px,1vw,11px) var(--mono);letter-spacing:1.8px;color:#bbb;margin-top:23px;padding:8px 17px;border:1px solid #353535;border-radius:100px;opacity:0;animation:popUp .65s ease 1.1s forwards}.intro-url b{color:var(--yellow)}
+.intro-progress{position:absolute;bottom:0;left:0;right:0;height:3px;background:#141414}.intro-progress span{display:block;width:100%;height:100%;background:var(--yellow);transform-origin:left;transform:scaleX(0);animation:introProgress 2.45s linear both}
+.intro-bottom{position:absolute;bottom:27px;left:4%;right:4%;display:flex;justify-content:space-between;gap:16px;font:9px var(--mono);letter-spacing:1.5px;color:#676767}
+.intro-skip{position:absolute;top:25px;right:4%;z-index:3;background:#181818;border:1px solid #393939;color:#d1d1d1;padding:10px 15px;border-radius:100px;font:10px var(--mono);transition:border-color .2s,color .2s}.intro-skip:hover{border-color:var(--yellow);color:var(--yellow)}
+.intro.intro-exit{transform:translate3d(0,-105%,0);visibility:hidden;opacity:1}.intro.intro-exit .intro-inner{transform:translateY(-10px);opacity:.7;transition:transform .7s,opacity .7s}.intro.intro-done{display:none}
+@keyframes introGrid{from{opacity:0;transform:scale(1.2)}to{opacity:.25;transform:scale(1)}}
+@keyframes haloMove{0%{opacity:0;transform:translate(-50%,-50%) scale(.56) rotate(-35deg)}45%{opacity:1}100%{opacity:.65;transform:translate(-50%,-50%) scale(1.14) rotate(55deg)}}
+@keyframes lineStreak{0%{transform:translateX(0);opacity:0}25%{opacity:.8}100%{transform:translateX(200%);opacity:0}}
+@keyframes popUp{from{opacity:0;transform:translateY(15px) scale(.86)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes introReveal{to{transform:translateY(0)}}
+@keyframes introProgress{to{transform:scaleX(1)}}
+/* Content staging and scroll reveal */
+body.motion-wait .hero-copy>*{opacity:0;transform:translateY(24px)}
+body.motion-active .hero-copy>*{animation:heroIn .83s var(--motion-ease) both}
+body.motion-active .hero-copy>*:nth-child(1){animation-delay:.02s}
+body.motion-active .hero-copy>*:nth-child(2){animation-delay:.12s}
+body.motion-active .hero-copy>*:nth-child(3){animation-delay:.25s}
+body.motion-active .hero-copy>*:nth-child(4){animation-delay:.33s}
+body.motion-active .hero-copy>*:nth-child(5){animation-delay:.43s}
+body.motion-active .hero-copy>*:nth-child(6){animation-delay:.55s}
+@keyframes heroIn{from{opacity:0;transform:translate3d(0,24px,0);filter:blur(7px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+/* Reusable reveal uses translate, not transform, so it never replaces card hover/3D transforms. */
+.motion-reveal{opacity:1;translate:0 0;}
+.motion-ready .motion-reveal{opacity:0;translate:0 22px;filter:blur(2.5px);transition:opacity .58s cubic-bezier(.2,.7,.22,1),translate .72s cubic-bezier(.2,.7,.22,1),filter .56s ease;transition-delay:0ms;}
+.motion-ready .motion-reveal.is-visible{opacity:1;translate:0 0;filter:blur(0);transition-delay:var(--reveal-delay,0ms);}
+
+.project-card{transition:transform .24s ease,box-shadow .28s ease,border-color .28s ease;will-change:auto;cursor:pointer}
+.project-card:hover{border-color:#515153;box-shadow:0 23px 42px rgba(0,0,0,.42)}
+.project-card .project-media img{transition:transform .6s var(--motion-ease)}
+.project-card:hover .project-media img{transform:scale(1.055)}
+.specialty:hover .specialty-icon{transform:rotate(35deg) scale(1.08);transition:transform .3s}
+/* Lanyard scene. Geometry driven by requestAnimationFrame, no expensive physics engine. */
+.badge-scene.physics-scene{position:relative;inset:auto;top:auto;right:auto;left:auto;bottom:auto;display:block;width:min(100%,520px);max-width:520px;height:570px;min-height:0;opacity:1;transform:none;perspective:1100px;justify-self:center;pointer-events:auto;overflow:visible;touch-action:pan-y}
+.strap-svg{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:3;overflow:visible;pointer-events:none;filter:drop-shadow(2px 6px 5px #000b)}
+.strap-print{font-family:var(--mono);font-weight:bold;opacity:.9}
+.physics-card{--card-rotation:0deg;position:absolute;left:50%;top:61%;width:228px;height:327px;z-index:7;transform:translate(-50%,-50%);transform-style:preserve-3d;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;outline:none;will-change:transform;filter:drop-shadow(0 24px 22px #0008)}
+.physics-card:active{cursor:grabbing}.physics-card:focus-visible{outline:2px solid var(--yellow);outline-offset:12px;border-radius:16px}
+.badge-3d{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.badge-face{position:absolute;inset:0;display:flex;flex-direction:column;background:linear-gradient(123deg,#fff,#c7c8cb 37%,#eeeef0 70%,#bcbfc2);padding:14px 13px 10px;border:1px solid #fff9;border-radius:17px;box-shadow:inset 0 2px 3px #fff7,inset 0 -3px 8px #0002;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(1px)}
+.badge-back{transform:rotateY(180deg) translateZ(1px);background:linear-gradient(125deg,#f2f2f2,#b8babc 60%,#e0e0e0)}
+.badge-hole{position:absolute;z-index:3;left:50%;top:3px;transform:translateX(-50%);width:41px;height:10px;background:linear-gradient(0deg,#1d1e20,#52565a);border:2px solid #a1a4a8;box-shadow:inset 0 1px 3px #090a0b;border-radius:7px}
+.badge-hole span{position:absolute;inset:2px;background:#111;border-radius:4px}
+.badge-photo{background:linear-gradient(137deg,#444,#101114);flex:1;position:relative;overflow:hidden;border-radius:9px;display:grid;place-items:center;margin-top:1px;min-height:0;pointer-events:none}
+.badge-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.12);z-index:2;pointer-events:none}
+.badge-photo .photo-fallback{font:74px var(--display);color:#fff;display:grid;place-items:center;position:absolute;inset:0;z-index:1;text-shadow:0 2px 9px #0006}.photo-fallback span{color:var(--yellow)}
+.badge-caption{display:flex;justify-content:space-between;align-items:center;gap:6px;font:9px var(--mono);letter-spacing:-.4px;color:#1f2224;min-height:30px}.badge-caption strong{font-weight:700}.badge-caption span{font-size:8px;color:#55595d}
+.badge-back-inner{margin-top:14px;background:linear-gradient(155deg,#151719,#08090b);flex:1;border-radius:9px;color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:12px;padding:16px}
+.badge-back-inner>span{font:21px var(--display)}.badge-back-inner>span span{color:var(--yellow)}.badge-symbol{display:grid;place-items:center;width:83px;height:83px;border:1px solid #494949;border-radius:50%;font-size:39px;color:var(--yellow)}.badge-back-inner strong{font:14px/1.4 var(--body);letter-spacing:1px}.badge-back-inner small{font:7px var(--mono);color:#8c8d91;letter-spacing:1px}
+.clip-assembly{position:absolute;z-index:8;left:50%;top:-50px;transform:translateX(-50%);width:58px;height:67px;pointer-events:none;filter:drop-shadow(0 3px 2px #000b)}
+.badge-scene.physics-scene .badge-index{position:absolute;z-index:2;bottom:0;left:50%;right:auto;top:auto;transform:translateX(-50%);font:9px var(--mono);letter-spacing:1.7px;color:#858688;white-space:nowrap;opacity:.9}
+.flip-hint{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:10;white-space:nowrap;color:#aaa;border:1px solid #323335;background:#151516aa;border-radius:80px;padding:8px 14px;font:9px var(--mono);letter-spacing:.9px;backdrop-filter:blur(8px);transition:color .2s,border-color .2s}.flip-hint:hover{color:var(--yellow);border-color:var(--yellow)}
+.physics-card.is-dragging{filter:drop-shadow(0 37px 32px #000d)}
+/* Comfortable proportions on tablet and mobile, badge remains real interaction */
+@media(max-width:1100px){.badge-scene.physics-scene{height:520px;width:min(100%,460px)}}
+@media(max-width:800px){.badge-scene.physics-scene{height:425px;width:min(100%,355px)}.physics-card{width:185px;height:268px}.clip-assembly{top:-47px}.badge-face{padding:11px 10px 8px;border-radius:14px}.badge-caption{font-size:8px}.badge-caption span{font-size:7px}.badge-scene.physics-scene .badge-index{bottom:0}.flip-hint{bottom:27px}.badge-back-inner .badge-symbol{width:60px;height:60px}.badge-back-inner{gap:9px}}
+@media(max-width:620px){
+  .intro-title .intro-row{font-size:clamp(28px,7.5vw,43px)}.intro-icons{margin-bottom:20px}.intro-overline{font-size:8px}.intro-url{font-size:7px;gap:7px;letter-spacing:.5px}.intro-bottom{font-size:7px}.intro-skip{font-size:8px}
+  .hero{min-height:0;height:auto;padding-bottom:0;overflow:hidden}
+  .hero-container{padding-top:115px;padding-bottom:0;display:flex;flex-direction:column;align-items:stretch;min-height:0}
+  .hero-copy{order:1;width:100%;max-width:100%;z-index:5}
+  .hero h1{font-size:clamp(31px,8.3vw,45px);line-height:1.08}
+  .hero-actions{padding-right:0;justify-content:flex-start}
+  .badge-scene.physics-scene{position:relative;order:2;top:auto;right:auto;left:auto;bottom:auto;transform:none;min-height:0;width:min(100%,338px);height:395px;align-self:center;margin-top:48px;opacity:1;z-index:3}
+  .physics-card{width:154px;height:226px;top:58%}
+  .badge-face{padding:9px 8px 7px;border-radius:11px}.badge-hole{width:27px;height:8px}.badge-caption{font-size:6px;min-height:21px}.badge-caption span{font-size:6px}.badge-photo .photo-fallback{font-size:54px}.badge-back-inner{gap:5px;margin-top:9px}.badge-back-inner .badge-symbol{width:47px;height:47px;font-size:28px}.badge-back-inner>span{font-size:15px}.badge-back-inner strong{font-size:10px}.badge-back-inner small{font-size:5px}
+  .clip-assembly{top:-44px;transform:translateX(-50%) scale(.72);transform-origin:50% 75%}
+  .flip-hint{bottom:19px;font-size:8px;padding:6px 12px}.badge-scene.physics-scene .badge-index{bottom:0;font-size:8px;white-space:nowrap}
+  .hero-foot{position:relative;left:auto;bottom:auto;transform:none;width:calc(100% - 34px);margin:0 auto 23px;z-index:4;padding-top:9px}
+  .hero-foot span:first-child{font-size:7px}
+}
+@media(max-width:390px){.badge-scene.physics-scene{width:min(100%,295px);height:377px;margin-top:45px}.physics-card{width:150px;height:220px}.hero-copy .hero-description{max-width:100%}}
+@media(prefers-reduced-motion:reduce){.intro{display:none!important}.motion-reveal{opacity:1!important;transform:none!important;transition:none!important}body.motion-wait .hero-copy>*{opacity:1!important;transform:none!important}body.motion-active .hero-copy>*{animation:none!important}.physics-card{will-change:auto}}
+
+/* Compact mobile project cards — no large empty dead zones */
+@media(max-width:620px){.project-card .project-body{min-height:0;flex:1}.project-card .project-body p{margin-bottom:12px}.project-card .project-body .details-btn{margin-top:12px}.project-grid{align-items:stretch}.project-card{display:flex;flex-direction:column}.project-card[hidden]{display:none}}
+
+
+/* V5 | Fita unificada + mosquetão e crachá elástico responsivo. */
+.badge-scene.physics-scene {isolation:visible;overflow:visible;pointer-events:auto;touch-action:pan-y}
+.badge-scene.physics-scene .strap-svg {position:absolute;inset:0;width:100%;height:100%;z-index:13;overflow:visible;pointer-events:none;filter:drop-shadow(1px 3px 3px rgba(0,0,0,.55))}
+.badge-scene.physics-scene .strap-svg #hardware {filter:drop-shadow(1px 4px 2px #000b)}
+.badge-scene.physics-scene .physics-card {z-index:11;pointer-events:auto!important;touch-action:none!important;user-select:none!important;-webkit-user-select:none!important;-webkit-user-drag:none!important;-webkit-touch-callout:none!important;cursor:grab}
+.badge-scene.physics-scene .physics-card * {user-select:none!important;-webkit-user-select:none!important;pointer-events:none!important;touch-action:none!important;-webkit-user-drag:none!important}
+.badge-scene.physics-scene .physics-card.is-dragging{cursor:grabbing;filter:drop-shadow(0 34px 28px #000c)}
+.badge-scene.physics-scene .badge-hole{top:2px;width:34px;height:10px;border:1px solid #6e7579;background:#131518;box-shadow:inset 0 2px 4px #000b}
+body{overscroll-behavior-x:none}
+
+.badge-scene.physics-scene .flip-hint{bottom:5px}
+@media(max-width:620px){.badge-scene.physics-scene .strap-svg{filter:drop-shadow(1px 2px 2px #0005)}}
+
+
+/* V7 | frente limpa e verso texturizado sem texto */
+.badge-front-clean{padding:10px;background:linear-gradient(135deg,#ffffff,#d9dadd 45%,#f4f4f6 78%,#c9ccd1);}
+.badge-front-clean .badge-photo-full{margin-top:12px;border-radius:12px;border:4px solid #ffffff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08), 0 10px 24px rgba(0,0,0,.16);}
+.badge-front-clean .badge-photo-full img{border-radius:8px;}
+.badge-front-clean .photo-fallback{border-radius:8px;background:linear-gradient(135deg,#1c1c1e,#050506);}
+.badge-front-clean .badge-caption{display:none!important;}
+.badge-back-clean{padding:10px;background:linear-gradient(130deg,#f6f6f7,#c7cacf 42%,#e7e8eb 74%,#bcc0c5);}
+.badge-back-clean .badge-caption,.badge-back-clean .badge-back-inner{display:none!important;}
+.badge-back-texture{position:relative;flex:1;margin-top:12px;border-radius:12px;border:4px solid #fff;overflow:hidden;background:
+  radial-gradient(circle at 20% 18%, rgba(255,255,255,.16), transparent 28%),
+  radial-gradient(circle at 82% 24%, rgba(255,255,255,.12), transparent 22%),
+  linear-gradient(135deg,#202124 0%,#111214 42%,#1b1d20 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), inset 0 0 32px rgba(255,255,255,.04), 0 10px 24px rgba(0,0,0,.16);}
+.badge-back-texture::before{content:'';position:absolute;inset:0;background:
+  linear-gradient(115deg, transparent 0 24%, rgba(255,255,255,.05) 26%, transparent 28% 46%, rgba(255,255,255,.04) 48%, transparent 50% 68%, rgba(255,255,255,.04) 70%, transparent 72%),
+  repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 2px, rgba(0,0,0,.02) 2px 5px);
+  mix-blend-mode:screen;opacity:.85;}
+.badge-back-texture::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.08), transparent 25%, transparent 70%, rgba(0,0,0,.18));}
+.badge-back-texture i{position:absolute;display:block;border-radius:50%;border:1px solid rgba(255,255,255,.06);}
+.badge-back-texture i:nth-child(1){width:120px;height:120px;left:-24px;top:-18px;}
+.badge-back-texture i:nth-child(2){width:88px;height:88px;right:-16px;top:28px;}
+.badge-back-texture i:nth-child(3){width:150px;height:150px;right:-38px;bottom:-46px;}
+.badge-back-texture i:nth-child(4){width:70px;height:70px;left:44px;bottom:20px;}
+.flip-hint{display:none!important;}
+
+
+/* V8 | blur suave da foto quando o crachá fica de lado */
+.physics-card{--photo-edge-blur:0px;--photo-edge-dim:0;--photo-edge-sheen:0;}
+.badge-front-clean .badge-photo-full{position:relative;isolation:isolate;}
+.badge-front-clean .badge-photo-full::after{content:'';position:absolute;inset:0;border-radius:8px;pointer-events:none;opacity:var(--photo-edge-dim);background:linear-gradient(90deg, rgba(255,255,255,.22), rgba(255,255,255,0) 28%, rgba(0,0,0,.10) 68%, rgba(0,0,0,.24));transition:opacity .12s linear;z-index:3;}
+.badge-front-clean .badge-photo-full::before{content:'';position:absolute;inset:-4% -10%;pointer-events:none;border-radius:14px;opacity:var(--photo-edge-sheen);background:linear-gradient(90deg, transparent 0 12%, rgba(255,255,255,.18) 44%, rgba(255,255,255,.28) 50%, rgba(255,255,255,.10) 56%, transparent 88%);filter:blur(10px);z-index:4;transition:opacity .12s linear;}
+.badge-front-clean .badge-photo-full img{filter:grayscale(1) contrast(1.12) blur(var(--photo-edge-blur));transition:filter .12s linear;}
+.badge-front-clean .photo-fallback{filter:blur(calc(var(--photo-edge-blur) * .55));transition:filter .12s linear;}
+
+
+/* ================= V9 polish / mobile side-by-side ================= */
+/* Keep the browser's inertial scrolling; no wheel/touch hijacking. */
+html{scroll-behavior:smooth;scroll-padding-top:88px;}
+body{-webkit-overflow-scrolling:touch;overscroll-behavior-x:none;}
+:where(a,button,.project-card){-webkit-tap-highlight-color:transparent;}
+:where(.nav-links a,.nav-cta,.primary-btn,.text-btn,.outline-btn,.tab,.details-btn,.contact-info a){transition:color .23s ease, background-color .23s ease, border-color .23s ease,box-shadow .23s ease, opacity .22s ease,transform .23s cubic-bezier(.23,.7,.26,1);}
+:where(a,button):focus-visible{outline:2px solid var(--yellow);outline-offset:3px;}
+:where(.tab,.nav-mobile,.details-btn):active{transform:scale(.963)}
+.nav-cta{display:grid;place-items:center;width:34px;height:34px;padding:0;flex:0 0 34px;color:#f0f0f0;}
+.nav-cta svg{display:block;transition:transform .26s ease,color .26s ease;}
+.nav-cta:hover{color:var(--yellow);border-color:var(--yellow);background:#242419;}
+.nav-cta:hover svg{transform:scale(1.12) rotate(-5deg);}
+.filter-tabs .tab.is-active{background:#3b3b3b;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.project-modal[open]{animation:modalReveal .34s cubic-bezier(.17,.8,.31,1) both;}
+.project-modal[open]::backdrop{animation:backdropReveal .28s ease both;}
+@keyframes modalReveal{from{opacity:0;transform:translateY(18px) scale(.982)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes backdropReveal{from{opacity:0}to{opacity:1}}
+.project-card.filter-enter{animation:filterShow .42s cubic-bezier(.2,.75,.2,1) both;}
+@keyframes filterShow{from{opacity:0;scale:.975}to{opacity:1;scale:1}}
+@media (hover:hover){.project-card:hover{box-shadow:0 13px 31px rgba(0,0,0,.34);}.primary-btn:hover{box-shadow:0 5px 20px rgba(243,235,0,.18)}}
+@media(max-width:620px){
+  .hero{min-height:640px;min-height:100svh;height:auto;overflow:hidden;display:flex;justify-content:center;padding-bottom:12px}
+  .hero-container{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(106px,33%);column-gap:5px;align-items:center;min-height:max(565px,calc(100svh - 12px));padding:90px 0 48px!important;max-width:100%;}
+  .hero-copy{grid-column:1;grid-row:1;order:initial;position:relative;z-index:5;width:100%;max-width:none;padding-right:0;align-self:center;}
+  .hero h1{font-size:clamp(26px,6.9vw,39px);line-height:1.12;letter-spacing:-1.65px;white-space:nowrap;margin-bottom:15px;}
+  .eyebrow{font-size:7px;letter-spacing:.7px;margin:0 0 19px;white-space:normal;line-height:1.7;}
+  .hero-role{font-size:8px;line-height:1.75;white-space:normal;}
+  .hero-description,.hero-copy .hero-description{font-size:10.5px;max-width:100%;line-height:1.6;}
+  .tag-list{gap:5px;margin-top:15px;}.tag-list span{font-size:7.5px;padding:5px 7px;}
+  .hero-actions{padding:0!important;display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:20px;}
+  .primary-btn{padding:11px 12px;gap:10px;font-size:10px;border-radius:8px;}
+  .text-btn{font-size:9px;gap:7px}
+  .badge-scene.physics-scene{grid-column:2;grid-row:1;order:initial;position:relative!important;inset:auto!important;right:auto!important;left:auto!important;bottom:auto!important;top:auto!important;transform:none!important;min-height:0!important;margin:0!important;z-index:3;opacity:1!important;width:100%!important;max-width:none;height:415px!important;align-self:center;justify-self:center;}
+  .badge-scene.physics-scene .physics-card{width:clamp(96px,27.8vw,124px);height:clamp(150px,40.5vw,186px);top:60%;}
+  .badge-scene.physics-scene .strap-svg{overflow:visible;}
+  .badge-scene.physics-scene .badge-index{display:none;}
+  .badge-front-clean,.badge-back-clean{padding:7px;}
+  .badge-front-clean .badge-photo-full,.badge-back-texture{margin-top:10px;border-width:3px;border-radius:9px;}
+  .hero-foot{width:calc(100% - 34px);position:absolute;bottom:16px;left:50%;transform:translateX(-50%);padding-top:0;margin:0;}
+  .hero-foot span:first-child{font-size:7px;}.hero-foot .hero-year{display:none;}
+  .about,.portfolio,.contact{padding:70px 0;}
+  .contact-layout{gap:14px;}
+  .project-card{transition:box-shadow .23s ease,border-color .23s ease;}
+  .motion-ready .motion-reveal{filter:none;translate:0 17px;transition-duration:.46s,.57s,0s;}
+  .motion-ready .motion-reveal.is-visible{translate:0 0;}
+}
+@media(max-width:365px){
+  .hero-container{grid-template-columns:minmax(0,1fr) minmax(97px,32%);min-height:max(548px,calc(100svh - 12px));gap:2px;}
+  .hero h1{font-size:clamp(23px,6.65vw,26px);letter-spacing:-1.45px;}
+  .eyebrow{font-size:6.7px;letter-spacing:.4px;}
+  .hero-description,.hero-copy .hero-description{font-size:10px;}
+  .hero-role{font-size:7.5px;}
+  .tag-list span{font-size:7px;}
+  .badge-scene.physics-scene{height:395px!important;}
+  .badge-scene.physics-scene .physics-card{width:94px;height:147px;}
+}
+@media(prefers-reduced-motion:reduce){.motion-ready .motion-reveal,.motion-ready .motion-reveal.is-visible{opacity:1;filter:none;translate:0 0;transition:none}.project-modal[open],.project-modal[open]::backdrop,.project-card.filter-enter{animation:none!important}}
+
+/* Final mobile alignment: content starts near the header, badge stays alongside it. */
+@media(max-width:620px){
+  .hero{justify-content:flex-start;}
+  .hero-container{align-items:start;padding-top:116px!important;}
+  .hero-copy{align-self:start;margin-top:30px;}
+  .badge-scene.physics-scene{align-self:start;}
+}
+@media(max-width:365px){
+  .hero-container{padding-top:108px!important;}
+  .hero-copy{margin-top:27px;}
+}
+.project-card.filter-enter{animation-fill-mode:backwards;}
