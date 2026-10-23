@@ -1,209 +1,360 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#090a0b" />
-  <meta name="description" content="Pedro Kauã — Web design, identidade visual e design gráfico. Sites e experiências visuais para marcas que querem se destacar." />
-  <meta property="og:title" content="Pedro Kauã — Web & Design" />
-  <meta property="og:description" content="Sites, identidade visual e design para marcas." />
-  <meta property="og:type" content="website" />
-  <title>Pedro Kauã — Web & Design</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=pk-motion-v11" />
-  <link rel="stylesheet" href="motion.css?v=pk-motion-v12" />
-  <script defer src="script.js?v=pk-motion-v11"></script>
-  <script defer src="motion.js?v=pk-motion-v13"></script>
-  <!-- Primeira pintura: o crachá NÃO pode surgir parado antes da queda. -->
-  <style id="badge-entrance-guard">body:not(.badge-drop-started) #badgeScene #strapSvg,body:not(.badge-drop-started) #badgeScene #physicsCard{visibility:hidden!important}</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090a0b">
+<title>Pedro Kauã — Web & Design</title>
+<meta name="description" content="Portfólio de Pedro Kauã: web design, identidade visual e design gráfico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="motion.css">
 </head>
-<body>
-  <canvas id="ambientDots" aria-hidden="true"></canvas>
-  <a class="skip-link" href="#inicio">Pular para conteúdo</a>
-  <div class="intro" id="intro" aria-label="Apresentação animada do portfólio">
-    <div class="intro-lines" aria-hidden="true"><i></i><i></i><i></i></div>
-    <div class="intro-halo" aria-hidden="true"></div>
-    <div class="intro-inner">
-      <div class="intro-icons" aria-hidden="true"><span>↗</span><span>✳</span><span>◉</span></div>
-      <span class="intro-overline">PK.WEB / DESIGN & DIGITAL</span>
-      <div class="intro-title"><span class="intro-row">Bem-vindo ao</span><span class="intro-row intro-row-accent">meu portfólio<span class="yellow">.</span></span></div>
-      <span class="intro-url">PEDRO KAUÃ <b>✳</b> CRIATIVIDADE QUE SE MOVE</span>
+<body class="motion-wait">
+<a href="#inicio" class="skip-link">Pular para conteúdo</a>
+
+<!-- INTRO -->
+<div id="intro" class="intro" aria-hidden="true">
+  <div class="intro-halo"></div>
+  <div class="intro-lines"><i></i><i></i><i></i></div>
+  <div class="intro-inner">
+    <div class="intro-icons">
+      <span>↗</span><span>✳</span><span>◉</span>
     </div>
-    <div class="intro-progress" aria-hidden="true"><span></span></div>
-    <button class="intro-skip" id="introSkip" type="button">Pular intro ↗</button>
-    <div class="intro-bottom" aria-hidden="true"><span>PK — 2026</span><span>CARREGANDO EXPERIÊNCIA</span></div>
+    <span class="intro-overline">PK.WEB / DESIGN & DIGITAL</span>
+    <h1 class="intro-title">
+      <span class="intro-row">Bem-vindo ao</span>
+      <span class="intro-row intro-row-accent">meu <span class="yellow">portfólio</span>.</span>
+    </h1>
+    <a href="#inicio" class="intro-url"><b>PEDRO KAUÃ</b> ✳ CRIATIVIDADE QUE SE MOVE</a>
   </div>
+  <button id="introSkip" class="intro-skip" type="button">Pular intro ↗</button>
+  <div class="intro-progress"><span></span></div>
+  <div class="intro-bottom">
+    <span>PK — 2026</span>
+    <span>CARREGANDO EXPERIÊNCIA</span>
+  </div>
+</div>
 
-  <header class="site-header" id="topo">
-    <nav class="nav-shell" aria-label="Navegação principal">
-      <a class="brand" href="#inicio" aria-label="PK Web, início">pk<span>.</span>web <span class="brand-mark">✳</span></a>
-      <div class="nav-links" id="navLinks">
-        <a href="#inicio" data-nav="inicio" class="active">Início</a>
-        <a href="#sobre" data-nav="sobre">Sobre</a>
-        <a href="#portfolio" data-nav="portfolio">Portfólio</a>
-        <a href="#contato" data-nav="contato">Contato</a>
-      </div>
-      <a class="nav-cta" href="https://instagram.com/pk.web_" target="_blank" rel="noopener noreferrer" aria-label="Instagram profissional"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <button class="nav-mobile" id="menuButton" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu"><span></span><span></span></button>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="nav-shell">
+    <a href="#inicio" class="brand" aria-label="Ir para o início">[pk](#inicio)[.](#inicio)[web ](#inicio)[✳](#inicio)</a>
+    <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+      <a href="#inicio" data-nav="inicio">Início</a>
+      <a href="#sobre" data-nav="sobre">Sobre</a>
+      <a href="#portfolio" data-nav="portfolio">Portfólio</a>
+      <a href="#contato" data-nav="contato">Contato</a>
     </nav>
-  </header>
+    <a href="#contato" class="nav-cta" aria-label="Ir para contato">✧</a>
+    <button id="menuButton" class="nav-mobile" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <main id="inicio">
-    <section class="hero section-grid" aria-labelledby="heroTitle">
-      <div class="container hero-container">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="star">✧</span> CRIATIVIDADE COM PROPÓSITO</p>
-          <h1 id="heroTitle">Web Design<span class="dot">.</span><br><span class="hero-muted">Identidade</span><br>Visual<span class="dot">.</span></h1>
-          <p class="hero-role"><span class="yellow">●</span> Pedro Kauã <span class="slash">/</span> Designer & Web Creator</p>
-          <p class="hero-description">Transformo ideias em <strong>sites, marcas e peças visuais</strong> com estética limpa, personalidade e foco no que importa para o seu negócio.</p>
-          <div class="tag-list" aria-label="Especialidades"><span>Web Design</span><span>Identidade visual</span><span>Design gráfico</span></div>
-          <div class="hero-actions">
-            <a class="primary-btn" href="#portfolio">Explorar projetos <span aria-hidden="true">↗</span></a>
-            <a class="text-btn" href="#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
-          </div>
+<main>
+  <!-- HERO -->
+  <section id="inicio" class="hero section-grid">
+    <div class="container hero-container">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="star">✳</span> CRIATIVIDADE COM PROPÓSITO</p>
+        <h1>Web Design.<span class="hero-muted">Identidade</span><br>Visual.</h1>
+        <p class="hero-role">● Pedro Kauã <span class="slash">/</span> Designer & Web Creator</p>
+        <p class="hero-description">Transformo ideias em sites, marcas e peças visuais com <strong>estética limpa</strong>, personalidade e foco no que importa para o seu negócio.</p>
+        <div class="tag-list">
+          <span>Web Design</span>
+          <span>Identidade visual</span>
+          <span>Design gráfico</span>
         </div>
-
-        <div class="badge-scene physics-scene" id="badgeScene" aria-label="Crachá interativo: arraste e solte para balançar">
-          <!-- Fita e mosquetão compartilhando o mesmo sistema de coordenadas: sem desconexão. -->
-          <svg class="strap-svg" id="strapSvg" aria-hidden="true" viewBox="0 0 520 570" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="strapThread" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#010101"/><stop offset=".18" stop-color="#16181a"/><stop offset=".45" stop-color="#2c2d30"/><stop offset=".71" stop-color="#0c0d0e"/><stop offset="1" stop-color="#020202"/>
-              </linearGradient>
-              <linearGradient id="chrome" x1="0" y1="0" x2="1" y2=".8">
-                <stop offset="0" stop-color="#c5c7ca"/><stop offset=".16" stop-color="#31363a"/><stop offset=".36" stop-color="#0b0c0f"/><stop offset=".59" stop-color="#6f777c"/><stop offset=".79" stop-color="#111315"/><stop offset="1" stop-color="#afb2b5"/>
-              </linearGradient>
-              <linearGradient id="chromeSheen" x1="0" y1="0" x2="0.85" y2="1">
-                <stop offset="0" stop-color="#9da2a6"/><stop offset=".42" stop-color="#101114"/><stop offset=".69" stop-color="#a0a5ab"/><stop offset="1" stop-color="#0a0b0d"/>
-              </linearGradient>
-            </defs>
-            <path id="strapEdge" fill="none" stroke="#030303" stroke-width="35" stroke-linecap="butt"/>
-            <path id="strapFabric" fill="none" stroke="url(#strapThread)" stroke-width="31" stroke-linecap="butt"/>
-            <path id="strapHighlight" fill="none" stroke="#8e9294" stroke-width="1.5" stroke-opacity=".15"/>
-            <path id="strapPath" d="M260 -200 V150" fill="none" stroke="none" />
-            <text id="strapInk" fill="#ced0d0" font-size="10.8" font-family="monospace" font-weight="700" letter-spacing="1.3" opacity=".82"><textPath href="#strapPath" startOffset="22%">PK.WEB　✳　PK.WEB　✳　PK.WEB　✳</textPath></text>
-            <!-- O topo do mosquetão nasce no ponto exato onde a fita termina. -->
-            <g id="hardware" filter="url(#none)">
-              <path d="M-16 -1 L16 -1 16 15 Q16 19 10 21 L-10 21 Q-16 19 -16 15 Z" fill="#111315" stroke="#52575a" stroke-width="1.1"/>
-              <path d="M-14 4 H14" stroke="#92989e" stroke-opacity=".24" stroke-width="1"/>
-              <path d="M-14 14 C-16 28 -10 37 0 37 C10 37 16 28 14 14" fill="none" stroke="#07080a" stroke-width="12" stroke-linecap="round"/>
-              <path d="M-14 14 C-16 28 -10 37 0 37 C10 37 16 28 14 14" fill="none" stroke="url(#chrome)" stroke-width="7" stroke-linecap="round"/>
-              <ellipse cx="0" cy="36.5" rx="5.5" ry="5" fill="url(#chromeSheen)" stroke="#070709" stroke-width="1.3"/>
-              <path d="M0 40 C-9 42 -13 48 -11 56 C-9 65 4 69 11 61" fill="none" stroke="#020304" stroke-width="11" stroke-linecap="round"/>
-              <path d="M0 40 C-9 42 -13 48 -11 56 C-9 65 4 69 11 61" fill="none" stroke="url(#chrome)" stroke-width="7" stroke-linecap="round"/>
-              <path d="M10.8 61 L5.5 48.5" stroke="#0b0e12" stroke-width="5.5" stroke-linecap="round"/>
-              <path d="M9 58 L5.8 49.5" stroke="#9a9ea6" stroke-opacity=".7" stroke-width="1.1" stroke-linecap="round"/>
-            </g>
-          </svg>
-          <div class="physics-card" id="physicsCard" draggable="false" tabindex="0" aria-label="Crachá de Pedro Kauã. Segure e arraste a foto para balançar e solte para ele voltar com efeito de estilingue.">
-          <div class="badge-3d" id="badge3d">
-              <div class="badge-face badge-front badge-front-clean">
-                <div class="badge-hole"><span></span></div>
-                <div class="badge-photo badge-photo-full"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/perfil.png" alt="Foto de Pedro Kauã" draggable="false" decoding="async" onerror="this.remove()"/><span class="photo-fallback">PK<span>.</span></span></div>
+        <div class="hero-actions">
+          <a href="#portfolio" class="primary-btn">Explorar projetos <span>↗</span></a>
+          <a href="#contato" class="text-btn">Vamos conversar <span>↗</span></a>
+        </div>
+      </div>
+      <div id="badgeScene" class="badge-scene physics-scene">
+        <svg id="strapSvg" class="strap-svg" viewBox="0 0 520 570" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <path id="strapEdge" fill="none" stroke="#0a0a0a" stroke-width="35" stroke-linecap="round"/>
+          <path id="strapFabric" fill="none" stroke="#141414" stroke-width="31" stroke-linecap="round"/>
+          <path id="strapHighlight" fill="none" stroke="#2a2a2a" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+          <path id="strapPath" fill="none" stroke="#141414" stroke-width="31" stroke-linecap="round"/>
+          <text id="strapInk" class="strap-print" fill="#f3eb00" font-size="10" letter-spacing="4" opacity=".8">PK.WEB ✳ PK.WEB ✳ PK.WEB ✳</text>
+          <g id="hardware">
+            <circle cx="0" cy="0" r="11" fill="#0e0e0e" stroke="#222" stroke-width="2"/>
+            <rect x="-9" y="-14" width="18" height="28" rx="9" fill="#111" stroke="#2a2a2a" stroke-width="1.5"/>
+          </g>
+        </svg>
+        <div id="physicsCard" class="physics-card" tabindex="0" role="button" aria-label="Crachá interativo. Arraste para brincar.">
+          <div id="badge3d" class="badge-3d">
+            <div class="badge-face badge-front-clean">
+              <div class="badge-hole"><span></span></div>
+              <div class="badge-photo-full">
+                <img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/perfil.png" alt="Pedro Kauã" loading="lazy">
+                <div class="photo-fallback">PK<span>.</span></div>
               </div>
-              <div class="badge-face badge-back badge-back-clean">
-                <div class="badge-hole"><span></span></div>
-                <div class="badge-back-texture" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <div class="badge-caption"><strong>PEDRO KAUÃ</strong><span>WEB & DESIGN</span></div>
+            </div>
+            <div class="badge-face badge-back-clean">
+              <div class="badge-hole"><span></span></div>
+              <div class="badge-back-texture">
+                <i></i><i></i><i></i><i></i>
               </div>
             </div>
           </div>
-          <span class="badge-index">ARRASTE • SOLTE • ESTILINGUE</span>
         </div>
+        <div class="clip-assembly" aria-hidden="true">
+          <svg viewBox="0 0 58 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="14" y="0" width="30" height="14" rx="4" fill="#1a1a1c" stroke="#333" stroke-width="1"/>
+            <rect x="18" y="14" width="22" height="10" fill="#0e0e0f"/>
+            <path d="M12 24 Q29 40 46 24 L42 60 Q29 67 16 60 Z" fill="#151516" stroke="#2a2a2c" stroke-width="1.5"/>
+            <circle cx="29" cy="42" r="5" fill="#0a0a0a" stroke="#333" stroke-width="1"/>
+          </svg>
+        </div>
+        <span class="badge-index">ARRASTE • SOLTE • ESTILINGUE</span>
+        <span class="flip-hint">↘ EXPLORE MEUS TRABALHOS</span>
       </div>
-      <div class="hero-foot container"><span>↘ EXPLORE MEUS TRABALHOS</span><a href="#sobre" aria-label="Ir para Sobre">SCROLL <span class="down-arrow">↓</span></a><span class="hero-year">PLANALTINA, GO — BR</span></div>
-    </section>
+    </div>
+    <div class="hero-foot">
+      <span>PLANALTINA, GO — BR</span>
+      <a href="#sobre" class="scroll-down">SCROLL <span class="down-arrow">↓</span></a>
+    </div>
+  </section>
 
-    <section class="about section-grid" id="sobre" aria-labelledby="aboutTitle">
-      <div class="container">
-        <p class="section-kicker">01 / SOBRE MIM</p>
-        <div class="about-layout">
-          <div class="about-copy">
-            <h2 class="section-title" id="aboutTitle">Prazer,<br>sou <em>Pedro<br>Kauã<span class="dot">.</span></em></h2>
-            <p>Sou designer e desenvolvedor web de Planaltina, Goiás. Gosto de criar projetos com <strong>visual forte, navegação simples e atenção aos detalhes.</strong></p>
-            <p>Meu trabalho une a parte visual e a parte prática: da identidade de uma marca até a experiência de quem acessa seu site ou encontra seu negócio nas redes.</p>
-            <div class="about-buttons"><a class="primary-btn" href="#contato">Iniciar um projeto <span>↗</span></a><a class="outline-btn" href="#portfolio">Ver meus trabalhos <span>↗</span></a></div>
+  <!-- ABOUT -->
+  <section id="sobre" class="about section-grid">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-copy">
+          <p class="section-kicker">01 / SOBRE MIM</p>
+          <h2>Prazer,<br>sou <em>Pedro Kauã</em>.</h2>
+          <p>Sou designer e desenvolvedor web de Planaltina, Goiás. Gosto de criar projetos com visual forte, navegação simples e atenção aos detalhes.</p>
+          <p>Meu trabalho une a parte visual e a parte prática: da identidade de uma marca até a experiência de quem acessa seu site ou encontra seu negócio nas redes.</p>
+          <div class="about-buttons">
+            <a href="#contato" class="outline-btn">Iniciar um projeto <span>↗</span></a>
+            <a href="#portfolio" class="outline-btn">Ver meus trabalhos <span>↗</span></a>
           </div>
-          <div class="about-aside">
-            <div class="about-avatar"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/perfil.png" alt="Pedro Kauã" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('is-fallback')"/><span>PK<span class="yellow">.</span></span></div>
-            <span class="micro-tag">FOCADO EM EXPERIÊNCIAS DIGITAIS</span>
+        </div>
+        <div class="about-aside">
+          <div class="about-avatar is-fallback">
+            <img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/perfil.png" alt="Foto de Pedro Kauã" loading="lazy">
+            <span>PK<span>.</span></span>
+          </div>
+          <span class="micro-tag">PK.FOCADO EM EXPERIÊNCIAS DIGITAIS</span>
+        </div>
+      </div>
+      <div class="specialty-grid">
+        <div class="specialty">
+          <div><span class="specialty-icon">↗</span><span>01</span></div>
+          <strong>Sites & páginas</strong>
+          <small>Responsivos, claros e intuitivos.</small>
+        </div>
+        <div class="specialty">
+          <div><span class="specialty-icon">✳</span><span>02</span></div>
+          <strong>Identidade visual</strong>
+          <small>Marcas com personalidade.</small>
+        </div>
+        <div class="specialty">
+          <div><span class="specialty-icon">◈</span><span>03</span></div>
+          <strong>Design gráfico</strong>
+          <small>Artes e presença nas redes.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="portfolio section-grid">
+    <div class="container">
+      <div class="center">
+        <p class="section-kicker">02 / TRABALHOS SELECIONADOS</p>
+        <h2 class="section-title">Meu <em>portfólio</em>.</h2>
+        <p class="section-sub">Um pouco do que faço: sites, conceitos visuais, organização digital e projetos autorais.</p>
+      </div>
+      <div class="filter-tabs" role="tablist">
+        <button class="tab is-active" data-filter="all" type="button" role="tab" aria-pressed="true">Todos <span>04</span></button>
+        <button class="tab" data-filter="web" type="button" role="tab" aria-pressed="false">Web design <span>03</span></button>
+        <button class="tab" data-filter="identity" type="button" role="tab" aria-pressed="false">Identidade visual <span>00</span></button>
+        <button class="tab" data-filter="graphic" type="button" role="tab" aria-pressed="false">Design gráfico <span>01</span></button>
+      </div>
+      <div class="project-grid">
+        <!-- FIO -->
+        <article class="project-card motion-reveal" data-category="web" data-title="FIO — Gestão para barbearias" data-kind="PROJETO AUTORAL" data-info="Produto digital, organização e experiência de uso." data-link="#">
+          <div class="project-media image-frame">
+            <span class="project-badge">WEB / SISTEMA</span>
+            <span class="little-note">01 — 04</span>
+            <img src="assets/fio-dashboard.png" alt="FIO — Gestão para barbearias" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-head"><span>WEB DESIGN</span><span>01 — 04</span></div>
+            <h3>FIO — Gestão para barbearias</h3>
+            <p>Produto digital, organização e experiência de uso.</p>
+            <button class="details-btn" type="button">Ver projeto <span>↗</span></button>
+          </div>
+        </article>
+
+        <!-- NAIARA -->
+        <article class="project-card motion-reveal" data-category="web" data-title="Naiara Sobral Cakes" data-kind="SITE RESPONSIVO" data-info="Uma presença digital delicada, clara e personalizada." data-link="#">
+          <div class="project-media image-frame">
+            <span class="project-badge">WEB DESIGN</span>
+            <span class="little-note">02 — 04</span>
+            <img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/naiara-sobral-cakes.png" alt="Naiara Sobral Cakes" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-head"><span>WEB DESIGN</span><span>02 — 04</span></div>
+            <h3>Naiara Sobral Cakes</h3>
+            <p>Uma presença digital delicada, clara e personalizada.</p>
+            <button class="details-btn" type="button">Ver projeto <span>↗</span></button>
+          </div>
+        </article>
+
+        <!-- PAULA -->
+        <article class="project-card motion-reveal" data-category="graphic" data-title="Paula Moda Íntima" data-kind="DESIGN / REDES" data-info="Organização e presença visual para redes sociais." data-link="#">
+          <div class="project-media image-frame">
+            <span class="project-badge">DESIGN GRÁFICO</span>
+            <span class="little-note">03 — 04</span>
+            <img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/paula.png" alt="Paula Moda Íntima" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-head"><span>DESIGN GRÁFICO</span><span>03 — 04</span></div>
+            <h3>Paula Moda Íntima</h3>
+            <p>Organização e presença visual para redes sociais.</p>
+            <button class="details-btn" type="button">Ver projeto <span>↗</span></button>
+          </div>
+        </article>
+
+        <!-- CLÍNICA -->
+        <article class="project-card motion-reveal" data-category="web" data-title="Clínica Leão de Judá" data-kind="LAYOUT WEB" data-info="Estrutura limpa e apresentação profissional de serviços." data-link="#">
+          <div class="project-media image-frame">
+            <span class="project-badge">WEB DESIGN</span>
+            <span class="little-note">04 — 04</span>
+            <img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/clinica-leao-de-juda.png" alt="Clínica Leão de Judá" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-head"><span>WEB DESIGN</span><span>04 — 04</span></div>
+            <h3>Clínica Leão de Judá</h3>
+            <p>Estrutura limpa e apresentação profissional de serviços.</p>
+            <button class="details-btn" type="button">Ver projeto <span>↗</span></button>
+          </div>
+        </article>
+      </div>
+      <p class="portfolio-note">✳ Projetos selecionados do meu trabalho e do meu portfólio pessoal.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES / APPROACH -->
+  <section class="approach section-grid">
+    <div class="container">
+      <div class="approach-layout">
+        <div>
+          <p class="section-kicker">03 / FALE COMIGO</p>
+          <h2 class="section-title">Vamos criar algo<br><em>bem feito</em>?</h2>
+          <p class="section-sub">Seu próximo projeto começa com uma boa conversa. Me conta sua ideia.</p>
+        </div>
+        <div class="approach-list">
+          <div>
+            <span></span>
+            <strong>CANAIS DE CONTATO</strong>
+            <p>WhatsApp, Instagram e E-mail.</p>
+            <span class="list-arrow"></span>
+          </div>
+          <div>
+            <span>✳</span>
+            <strong>Vamos tirar sua ideia do papel.</strong>
+            <p>Quer um site, uma marca nova ou uma identidade mais organizada para o seu negócio? Me chama e a gente conversa.</p>
+            <span class="list-arrow">↗</span>
           </div>
         </div>
-        <div class="specialty-grid">
-          <a href="#portfolio" data-quick-filter="web" class="specialty"><div><span class="specialty-icon">↗</span><span>01</span></div><strong>Sites & páginas</strong><small>Responsivos, claros e intuitivos.</small></a>
-          <a href="#portfolio" data-quick-filter="brand" class="specialty"><div><span class="specialty-icon">✳</span><span>02</span></div><strong>Identidade visual</strong><small>Marcas com personalidade.</small></a>
-          <a href="#portfolio" data-quick-filter="graphic" class="specialty"><div><span class="specialty-icon">◈</span><span>03</span></div><strong>Design gráfico</strong><small>Artes e presença nas redes.</small></a>
-        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="portfolio section-grid" id="portfolio" aria-labelledby="portfolioTitle">
-      <div class="container portfolio-container">
-        <p class="section-kicker center">02 / TRABALHOS SELECIONADOS</p>
-        <h2 class="section-title center" id="portfolioTitle">Meu <span class="yellow">portfólio.</span></h2>
-        <p class="section-sub center">Um pouco do que faço: sites, conceitos visuais, organização digital e projetos autorais.</p>
-        <div class="filter-tabs" aria-label="Filtrar projetos" role="group">
-          <button type="button" class="tab is-active" data-filter="all" aria-pressed="true">Todos <span>06</span></button>
-          <button type="button" class="tab" data-filter="web" aria-pressed="false">Web design</button>
-          <button type="button" class="tab" data-filter="brand" aria-pressed="false">Identidade visual</button>
-          <button type="button" class="tab" data-filter="graphic" aria-pressed="false">Design gráfico</button>
-        </div>
-        <div class="project-grid">
-          <article class="project-card" data-category="web" data-title="FIO — Gestão para barbearias" data-kind="Projeto autoral / Plataforma web" data-info="Plataforma de gestão para barbearias, com agenda e experiência pensada para o dia a dia do negócio." data-link="https://usefio.vercel.app/" data-visual="fio">
-            <div class="project-media visual-fio"><div class="mock-window"><div class="mock-browser"><span></span><span></span><span></span><em>FIO / PAINEL</em></div><div class="mock-side"><b>fio<span>.</span></b><div class="mock-line"></div><div class="mock-line"></div><div class="mock-line small"></div></div><div class="mock-graph"><div class="mock-heading"></div><div class="mock-stats"><i></i><i></i><i></i></div><div class="mock-calendar"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><span class="project-badge">PROJETO AUTORAL</span></div>
-            <div class="project-body"><div class="project-head"><span>WEB / SISTEMA</span><span>01 — 06</span></div><h3>FIO — Gestão para barbearias</h3><p>Produto digital, organização e experiência de uso.</p><button class="details-btn" type="button" aria-label="Ver detalhes de FIO">Ver projeto <span>↗</span></button></div>
-          </article>
-          <article class="project-card" data-category="web" data-title="Naiara Sobral Cakes" data-kind="Web design / Site de confeitaria" data-info="Projeto de site com apresentação responsiva e foco em destacar a identidade de uma confeitaria." data-image="naiara-sobral-cakes.png">
-            <div class="project-media image-frame"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/naiara-sobral-cakes.png" loading="lazy" decoding="async" alt="Projeto de site Naiara Sobral Cakes" onerror="this.style.display='none'"/><div class="image-fallback">NAIARA <span>CAKES</span></div><span class="project-badge">SITE RESPONSIVO</span></div>
-            <div class="project-body"><div class="project-head"><span>WEB DESIGN</span><span>02 — 06</span></div><h3>Naiara Sobral Cakes</h3><p>Uma presença digital delicada, clara e personalizada.</p><button class="details-btn" type="button" aria-label="Ver detalhes Naiara Sobral Cakes">Ver projeto <span>↗</span></button></div>
-          </article>
-          <article class="project-card" data-category="brand" data-title="PK.WEB — Identidade autoral" data-kind="Identidade visual / Marca pessoal" data-info="Identidade autoral em preto e amarelo, com linguagem minimalista, tipografia marcante e elementos visuais simples." data-visual="pk">
-            <div class="project-media visual-pk"><span class="little-note">IDENTIDADE VISUAL / 2026</span><div class="pk-logo">PK<span>.</span><div>WEB DESIGN<br>& VISUAL</div></div><div class="visual-pk-bottom"><span>BLACK / YELLOW</span><span>CREATIVE STUDIO ◈</span></div><span class="project-badge">IDENTIDADE AUTORAL</span></div>
-            <div class="project-body"><div class="project-head"><span>IDENTIDADE VISUAL</span><span>03 — 06</span></div><h3>PK.WEB — Marca pessoal</h3><p>Tipografia, contraste e linguagem visual própria.</p><button class="details-btn" type="button" aria-label="Ver detalhes PK WEB">Ver projeto <span>↗</span></button></div>
-          </article>
-          <article class="project-card" data-category="graphic" data-title="Paula Moda Íntima" data-kind="Design para redes / Organização digital" data-info="Trabalho de apresentação e organização de perfil, com elementos visuais para fortalecer a presença digital da loja." data-image="paula.png">
-            <div class="project-media image-frame soft-purple"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/paula.png" loading="lazy" decoding="async" alt="Visual do projeto Paula Moda Íntima" onerror="this.style.display='none'"/><div class="image-fallback">PAULA <span>MODA ÍNTIMA</span></div><span class="project-badge">DESIGN / REDES</span></div>
-            <div class="project-body"><div class="project-head"><span>DESIGN GRÁFICO</span><span>04 — 06</span></div><h3>Paula Moda Íntima</h3><p>Organização e presença visual para redes sociais.</p><button class="details-btn" type="button" aria-label="Ver detalhes Paula Moda Íntima">Ver projeto <span>↗</span></button></div>
-          </article>
-          <article class="project-card" data-category="web" data-title="Clínica Leão de Judá" data-kind="Web design / Apresentação digital" data-info="Layout de site na área de serviços, com foco em hierarquia visual e navegação objetiva." data-image="clinica-leao-de-juda.png">
-            <div class="project-media image-frame"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/clinica-leao-de-juda.png" loading="lazy" decoding="async" alt="Projeto visual da Clínica Leão de Judá" onerror="this.style.display='none'"/><div class="image-fallback">CLÍNICA <span>LEÃO DE JUDÁ</span></div><span class="project-badge">LAYOUT WEB</span></div>
-            <div class="project-body"><div class="project-head"><span>WEB DESIGN</span><span>05 — 06</span></div><h3>Clínica Leão de Judá</h3><p>Estrutura limpa e apresentação profissional de serviços.</p><button class="details-btn" type="button" aria-label="Ver detalhes Clínica Leão de Judá">Ver projeto <span>↗</span></button></div>
-          </article>
-          <article class="project-card" data-category="graphic" data-title="Artes para redes sociais" data-kind="Design gráfico / Conteúdo digital" data-info="Seleção de peças gráficas criadas para comunicação digital, com atenção à composição, tipografia e consistência visual." data-image="artes.png">
-            <div class="project-media image-frame"><img src="https://raw.githubusercontent.com/2008kauapedro-max/pk.web-portfolio/main/assets/artes.png" loading="lazy" decoding="async" alt="Peças de design gráfico para redes sociais" onerror="this.style.display='none'"/><div class="image-fallback">DESIGN <span>SOCIAL MEDIA</span></div><span class="project-badge">PEÇAS GRÁFICAS</span></div>
-            <div class="project-body"><div class="project-head"><span>DESIGN GRÁFICO</span><span>06 — 06</span></div><h3>Artes para redes sociais</h3><p>Composições visuais para comunicar com mais impacto.</p><button class="details-btn" type="button" aria-label="Ver detalhes Artes para redes sociais">Ver projeto <span>↗</span></button></div>
-          </article>
-        </div>
-        <p class="portfolio-note">✳ Projetos selecionados do meu trabalho e do meu portfólio pessoal.</p>
+  <!-- CONTACT -->
+  <section id="contato" class="contact section-grid">
+    <div class="container">
+      <div class="center">
+        <p class="section-kicker">◉ PLANALTINA — GO / ATENDIMENTO ONLINE</p>
+        <h2 class="section-title">Vamos <em>conversar</em>?</h2>
       </div>
-    </section>
-
-    <section class="contact section-grid" id="contato" aria-labelledby="contactTitle">
-      <div class="container contact-container"><p class="section-kicker center">03 / FALE COMIGO</p><h2 class="section-title center" id="contactTitle">Vamos criar algo<br><span class="yellow">bem feito?</span></h2><p class="section-sub center">Seu próximo projeto começa com uma boa conversa. Me conta sua ideia.</p>
-        <div class="contact-layout">
-          <div class="contact-info"><span class="contact-label">CANAIS DE CONTATO</span><h3>Vamos tirar sua<br>ideia do papel<span class="yellow">.</span></h3><p>Quer um site, uma marca nova ou uma identidade mais organizada para o seu negócio? Me chama e a gente conversa.</p>
-            <a href="https://wa.me/5561993148848" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><strong>(61) 99314-8848</strong><span>↗</span></a>
-            <a href="https://instagram.com/pk.web_" target="_blank" rel="noopener noreferrer"><span>Instagram</span><strong>@pk.web_</strong><span>↗</span></a>
-            <a href="mailto:pedrokauaweb@gmail.com"><span>E-mail</span><strong>pedrokauaweb@gmail.com</strong><span>↗</span></a>
-            <div class="contact-location">◉ PLANALTINA — GO / ATENDIMENTO ONLINE</div>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <span class="contact-label">CANAIS DE CONTATO</span>
+          <h3>Vamos tirar sua<br>ideia do papel.</h3>
+          <p>Quer um site, uma marca nova ou uma identidade mais organizada para o seu negócio? Me chama e a gente conversa.</p>
+          <a href="https://wa.me/5561993148848" target="_blank" rel="noopener">
+            <span>WhatsApp</span>
+            <strong>(61) 99314-8848</strong>
+            <span>↗</span>
+          </a>
+          <a href="https://instagram.com/pk.web_" target="_blank" rel="noopener">
+            <span>Instagram</span>
+            <strong>@pk.web_</strong>
+            <span>↗</span>
+          </a>
+          <a href="mailto:pedrokauaweb@gmail.com">
+            <span>E-mail</span>
+            <strong>pedrokauaweb@gmail.com</strong>
+            <span>↗</span>
+          </a>
+          <p class="contact-location">◉ PLANALTINA — GO / ATENDIMENTO ONLINE</p>
+        </div>
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-title">
+            <span class="contact-label">BRIEFING RÁPIDO</span>
+            <span>↗</span>
           </div>
-          <form id="contactForm" class="contact-form">
-            <div class="form-title"><span>BRIEFING RÁPIDO</span><span>↗</span></div>
-            <label>Seu nome <input type="text" name="name" placeholder="Como posso te chamar?" maxlength="70" required autocomplete="name" /></label>
-            <label>O que você precisa? <select name="service" required><option value="" selected disabled>Selecione um serviço</option><option>Criação de site</option><option>Identidade visual</option><option>Design gráfico / Redes sociais</option><option>Outro projeto</option></select></label>
-            <label>Me conta sobre sua ideia <textarea name="details" rows="4" maxlength="1200" placeholder="Um resumo simples do projeto..." required></textarea></label>
-            <button class="primary-btn submit-btn" type="submit">Enviar pelo WhatsApp <span>↗</span></button>
-            <p class="form-note">Ao enviar, o WhatsApp abre com sua mensagem pronta. Nenhum dado é armazenado neste site.</p>
-          </form>
-        </div>
+          <label for="name">Seu nome</label>
+          <input type="text" id="name" name="name" required placeholder="Como posso te chamar?">
+          
+          <label for="service">O que você precisa?</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Selecione um serviço</option>
+            <option value="Criação de site">Criação de site</option>
+            <option value="Identidade visual">Identidade visual</option>
+            <option value="Design gráfico / Redes sociais">Design gráfico / Redes sociais</option>
+            <option value="Outro projeto">Outro projeto</option>
+          </select>
+          
+          <label for="details">Me conta sobre sua ideia</label>
+          <textarea id="details" name="details" required placeholder="Fala um pouco do seu projeto..."></textarea>
+          
+          <button type="submit" class="primary-btn submit-btn">Enviar pelo WhatsApp <span>↗</span></button>
+          <p class="form-note">Ao enviar, o WhatsApp abre com sua mensagem pronta. Nenhum dado é armazenado neste site.</p>
+        </form>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer class="footer"><div class="container footer-inner"><a class="footer-logo" href="#inicio">pk<span>.</span>web</a><span>© 2026 PEDRO KAUÃ — WEB & DESIGN</span><button class="motion-switch" id="motionSwitch" type="button" aria-pressed="true" title="Ativar ou desativar animações">ANIMAÇÕES: ON</button><a href="#inicio">VOLTAR AO TOPO ↑</a></div></footer>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="#inicio" class="footer-logo">[pk](#inicio)[.](#inicio)[web](#inicio)</a>
+    <span>© 2026 PEDRO KAUÃ — WEB & DESIGN</span>
+    <button id="motionSwitch" class="motion-switch" type="button" aria-pressed="false">ANIMAÇÕES: ON</button>
+    <a href="#inicio">VOLTAR AO TOPO ↑</a>
+  </div>
+</footer>
 
-  <dialog class="project-modal" id="projectModal" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" type="button" aria-label="Fechar detalhes">✕</button><div class="modal-art" id="modalArt"></div><div class="modal-content"><p class="section-kicker" id="modalKind"></p><h2 id="modalTitle"></h2><p id="modalInfo"></p><div class="modal-actions"><a class="primary-btn" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">Visitar projeto ↗</a><button class="outline-btn" id="modalBack" type="button">Voltar aos projetos ↑</button></div></div></dialog>
+<!-- MODAL -->
+<dialog id="projectModal" class="project-modal" aria-labelledby="modalTitle">
+  <button id="modalClose" class="modal-close" type="button" aria-label="Fechar">✕</button>
+  <div class="modal-art" id="modalArt"></div>
+  <div class="modal-content">
+    <p class="section-kicker" id="modalKind"></p>
+    <h2 id="modalTitle"></h2>
+    <p id="modalInfo"></p>
+    <div class="modal-actions">
+      <a id="modalLink" href="#" class="primary-btn" target="_blank" rel="noopener">Visitar projeto <span>↗</span></a>
+      <button id="modalBack" class="outline-btn" type="button">Voltar aos projetos <span>↑</span></button>
+    </div>
+  </div>
+</dialog>
+
+<canvas id="ambientDots" aria-hidden="true"></canvas>
+
+<script src="script.js"></script>
+<script src="motion.js"></script>
 </body>
 </html>
